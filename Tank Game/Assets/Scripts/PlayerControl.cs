@@ -41,18 +41,9 @@ public class PlayerControl : MonoBehaviour
 
             Quaternion rotation = Quaternion.LookRotation(fromPlayerToMouse);
 
-            GameObject tower = transform.FindChild("Graphics").FindChild("Tower").gameObject;
+            Transform tower = transform.FindChild("Graphics").FindChild("Tower");
 
-            if (tower == null) Debug.Log("tower is null");
-
-            //Rigidbody rbTower = tower.GetComponent<Rigidbody>();
-
-            //if (rbTower == null) Debug.Log("rbTower is null");
-
-            //rbTower.MoveRotation(rotation);
-
-            tower.transform.rotation = rotation;
-            tower.transform.Rotate(new Vector3(-90f, 0f, 0f)); //ez azért kell, mert rossz a tank 3D modellje, és alapból -90 fokkal el kell forgatni az X tengely körül...
+            tower.rotation = rotation;
         }
     }
 }

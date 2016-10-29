@@ -85,6 +85,12 @@ public class MapLoader : MonoBehaviour
 
         return cellMap;
     }
+
+    public static Vector2 WorldCoordsToMapCoordsFloat(Vector2 cellWorld)
+    {
+        return new Vector2(cellWorld.x / (float)MapCellSize + MapSizeX / 2f, 
+                            MapSizeY / 2f - cellWorld.y / (float)MapCellSize);
+    }
 }
 
 //class Cell

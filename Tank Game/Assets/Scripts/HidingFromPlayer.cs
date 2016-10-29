@@ -45,13 +45,13 @@ public class HidingFromPlayer : MonoBehaviour {
 
     public bool intersect(Line l, int cellX, int cellY)
     {
-        if (isBetween(cellY, cellY + 1, l.getY(cellX + 0.2)))
+        if (isBetween(cellX, cellX + 1, l.getX(cellY)))
             return true;
-        if (isBetween(cellY, cellY + 1, l.getY(cellX + 0.8)))
+        if (isBetween(cellX, cellX + 1, l.getX(cellY + 1)))
             return true;
-        if (isBetween(cellX, cellX + 1, l.getX(cellY + 0.2)))
+        if (isBetween(cellY, cellY + 1, l.getY(cellX)))
             return true;
-        if (isBetween(cellX, cellX + 1, l.getX(cellY + 0.8)))
+        if (isBetween(cellY, cellY + 1, l.getY(cellX + 1)))
             return true;
         return false;
     }
@@ -64,18 +64,16 @@ public class HidingFromPlayer : MonoBehaviour {
         if (MapLoader.Map[cellX,cellY] == MapLoader.WALL)
             return false;
 
-        //TODO x és y playerPosition-ben fel van cserélve! Vissza kell cserélni.
-        int[] playerPosTemp = MapLoader.WorldCoordsToMapCoords(new Vector2(player.position.x, player.position.z));
-        int[] playerPosition = { playerPosTemp[1], playerPosTemp[0] };  
+        int[] playerPosition = MapLoader.WorldCoordsToMapCoords(new Vector2(player.position.x, player.position.z));
+        Vector2 playerPositionFloat = MapLoader.WorldCoordsToMapCoordsFloat(new Vector2(player.position.x, player.position.z));
 
-        Line l = new Line(playerPosition[0] + 0.5, playerPosition[1] + 0.5, cellX + 0.5, cellY + 0.5);
+        Line l = new Line(playerPositionFloat.y, playerPositionFloat.x, cellX + 0.5, cellY + 0.5);
 
-        int minX = min(playerPosition[0], cellX);
-        int maxX = max(playerPosition[0], cellX) + 1;
-        int minY = min(playerPosition[1], cellY);
-        int maxY = max(playerPosition[1], cellY) + 1;
+        int minX = min(playerPosition[1], cellX);
+        int maxX = max(playerPosition[1], cellX) + 1;
+        int minY = min(playerPosition[0], cellY);
+        int maxY = max(playerPosition[0], cellY) + 1;
 
-        //Itt nem muszáj az összes cellát végignézni, lehet csökkenteni ha figyelembe vesszük az egyenes meredekségét
         for (int i = minX; i < maxX; i++)
         {
             for (int g = minY; g < maxY; g++)
@@ -108,29 +106,18 @@ public class Line
 
     public Line(double x1, double y1, double x2, double y2)
     {
-        if (y1 == y2)
+        if (x1 == x2)
         {
             a = double.PositiveInfinity;
-            b = y1;
+            b = x1;
         }
         else
         {
-            a = (x1 - x2) / (y1 - y2);
-            b = x1 - a * y1;
+            a = (y1 - y2) / (x1 - x2);
+            b = y1 - a * x1;
         }
     }
-
     public double getX(double y)
-    {
-        if (a == double.PositiveInfinity)
-        {
-            return -1.0;
-        }
-        return a * y + b;
-
-    }
-
-    public double getY(double x)
     {
         if (a == 0)
         {
@@ -140,6 +127,16 @@ public class Line
         {
             return b;
         }
-        return (x - b) / a;
+        return (y - b) / a;
+    }
+
+    public double getY(double x)
+    {
+        if (a == double.PositiveInfinity)
+        {
+            return -1.0;
+        }
+        return a * x + b;
+
     }
 }

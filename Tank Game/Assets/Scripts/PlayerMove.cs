@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerControl : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
 
     public float MovementSpeed;
@@ -18,7 +18,7 @@ public class PlayerControl : MonoBehaviour
         raycastFloorMask = LayerMask.GetMask("RaycastFloor");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         MovePlayer();
         RotateTower();
@@ -27,7 +27,8 @@ public class PlayerControl : MonoBehaviour
     private void MovePlayer()
     {
         transform.Rotate(Vector3.up * RotationSpeed * Input.GetAxisRaw("Horizontal") * Input.GetAxisRaw("Vertical") * Time.deltaTime);
-        rb.velocity = transform.forward * MovementSpeed * Input.GetAxisRaw("Vertical");
+        Vector3 newVelocity = transform.forward * MovementSpeed * Input.GetAxisRaw("Vertical");
+        rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
     }
 
     private void RotateTower()

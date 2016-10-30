@@ -8,6 +8,8 @@ public class BulletExplode : MonoBehaviour {
     public string PlayerTag = "Player";
     public string EnemyTag = "Enemy";
 
+    public GameObject ExplosionParticles;
+
     void OnTriggerEnter(Collider col)
     {
         //if (col.tag == PlayerTag || col.tag == EnemyTag)
@@ -30,6 +32,11 @@ public class BulletExplode : MonoBehaviour {
 
     private void Explode()
     {
+        Quaternion explosionRotation = new Quaternion();
+        explosionRotation.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + 180f, transform.eulerAngles.z);
+        GameObject explosion = (GameObject) Instantiate(ExplosionParticles, transform.position, explosionRotation);
+        Destroy(explosion, 0.5f);
+
         Destroy(gameObject);
         return;
     }

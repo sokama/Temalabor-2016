@@ -603,5 +603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71719fefa37544b45b6f7959a561f802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementSpeed: 7
+  RotationSpeed: 10
   player: {fileID: 0}
-  wall: {fileID: 1000012931506376, guid: 9609b199d2c9a1142983d65507c35928, type: 2}

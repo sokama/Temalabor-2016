@@ -589,6 +589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a90753f7ecfce44ba750abcb24ec4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExplosionParticles: {fileID: 1000013860329176, guid: 76278477092b20646b7b0837b627f0b3,
+    type: 2}
   StartHealth: 100
 --- !u!114 &114000013032727422
 MonoBehaviour:
@@ -601,5 +603,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71719fefa37544b45b6f7959a561f802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MovementSpeed: 7
+  RotationSpeed: 10
   player: {fileID: 0}
-  wall: {fileID: 1000012931506376, guid: 9609b199d2c9a1142983d65507c35928, type: 2}

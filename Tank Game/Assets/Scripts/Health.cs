@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Health : MonoBehaviour {
 
+    public GameObject ExplosionParticles;
     public float StartHealth = 100;
     private float currentHealth;
 
@@ -23,6 +24,9 @@ public class Health : MonoBehaviour {
 
     private void Die()
     {
+        GameObject explosion = (GameObject)Instantiate(ExplosionParticles, transform.position, transform.rotation);
+        Destroy(explosion, 2f);
+
         Destroy(gameObject);
         return;
     }

@@ -91,6 +91,11 @@ public class MapLoader : MonoBehaviour
         return new Vector2(cellWorld.x / (float)MapCellSize + MapSizeX / 2f, 
                             MapSizeY / 2f - cellWorld.y / (float)MapCellSize);
     }
+
+    public static Vector2 MapCoordsToWorldCoordsFloat(Vector2 cellMap)
+    {
+        return new Vector2(MapCellSize * (cellMap.x - MapSizeX / 2f), MapCellSize * (-cellMap.y + MapSizeY / 2f));
+    }
 }
 
 //class Cell

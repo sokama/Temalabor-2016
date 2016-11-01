@@ -10,7 +10,7 @@ public class HidingFromPlayer : MonoBehaviour
     public float RotationSpeed;
 
     public Transform player;
-
+    
     private Enemy enemyMover;
 
     int n = 0;
@@ -68,19 +68,8 @@ public class HidingFromPlayer : MonoBehaviour
 
     private void rotateTower()
     {
-        Ray camRay = Camera.main.ScreenPointToRay(Camera.main.WorldToScreenPoint(player.transform.position)); // Maybe an easier solution exists??
-        RaycastHit raycastFloorHit;
-        if (Physics.Raycast(camRay, out raycastFloorHit, raycastLength, raycastFloorMask))
-        {
-            Vector3 fromPlayerToMouse = raycastFloorHit.point - transform.position;
-            fromPlayerToMouse.y = 0f;
-
-            Quaternion rotation = Quaternion.LookRotation(fromPlayerToMouse);
-
-            Transform tower = transform.FindChild("Graphics").FindChild("Tower");
-
-            tower.rotation = rotation;
-        }
+        Transform tower = transform.FindChild("Graphics").FindChild("Tower");
+        tower.rotation = Quaternion.LookRotation(player.position - transform.position);
     }
 
     private void shoot()

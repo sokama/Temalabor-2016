@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 
+//TODO: Rename script (e.g EnemyController)
 public class HidingFromPlayer : MonoBehaviour
 {
     
@@ -9,8 +10,15 @@ public class HidingFromPlayer : MonoBehaviour
     public float RotationSpeed;
 
     public Transform player;
-
+    
     private Enemy enemyMover;
+
+    int n = 0;
+    int raycastFloorMask;
+    float raycastLength = 100f;
+
+    public GameObject Bullet;
+    public float BulletSpeed = 10f;
 
     // Use this for initialization
     void Start()
@@ -18,9 +26,26 @@ public class HidingFromPlayer : MonoBehaviour
         enemyMover = new Enemy(this);
     }
 
+    void Awake()
+    {
+        raycastFloorMask = LayerMask.GetMask("RaycastFloor");
+    }
+
     void Update()
     {
+        if (player == null)
+            return;
         enemyMover.moveEnemy();
+        if (enemyMover.isEnemySeeable())
+        {
+            n++;
+            rotateTower();
+            if(n == 60)
+            {
+                n = 0;
+                shoot();
+            }
+        }    
     }
 
     public void moveEnemy(int nextColumn, int nextRow)
@@ -30,8 +55,51 @@ public class HidingFromPlayer : MonoBehaviour
         Vector3 nextPosition = new Vector3(nextPositionXY.x, currentPosition.y, nextPositionXY.y);
         Vector3 distanceVector = nextPosition - currentPosition;
 
-        transform.forward = Vector3.RotateTowards(transform.forward, distanceVector, RotationSpeed * Time.deltaTime, 0.0f);
-        transform.position = Vector3.MoveTowards(transform.position, currentPosition + transform.forward, MovementSpeed * Time.deltaTime);
+        Vector3 newPosition = Vector3.MoveTowards(transform.position, currentPosition + transform.forward, MovementSpeed * Time.deltaTime);
+        if(!vectorEquals(newPosition,transform.position))
+        {
+            transform.position = newPosition;
+            transform.forward = Vector3.RotateTowards(transform.forward, distanceVector, RotationSpeed * Time.deltaTime, 0.0f);
+
+        }
+        //transform.forward = Vector3.RotateTowards(transform.forward, distanceVector, RotationSpeed * Time.deltaTime, 0.0f);
+        //transform.position = Vector3.MoveTowards(transform.position, currentPosition + transform.forward, MovementSpeed * Time.deltaTime);
+    }
+
+    private void rotateTower()
+    {
+        Transform tower = transform.FindChild("Graphics").FindChild("Tower");
+        tower.rotation = Quaternion.LookRotation(player.position - transform.position);
+    }
+
+    private void shoot()
+    {
+        Transform shootingPoint = transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
+        GameObject bullet = (GameObject)Instantiate(Bullet, shootingPoint.position, shootingPoint.rotation);
+
+        Vector3 bulletVelocity = bullet.transform.forward * BulletSpeed;
+        bullet.GetComponent<Rigidbody>().velocity = bulletVelocity;
+    }
+
+    private bool floatEquals(float f1, float f2)
+    {
+        float d = 0.001f;
+        if(f1-d < f2 && f2 < f1+d)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private bool vectorEquals(Vector3 v1, Vector3 v2)
+    {
+        if (!floatEquals(v1.x, v2.x))
+            return false;
+        if (!floatEquals(v1.y, v2.y))
+            return false;
+        if (!floatEquals(v1.z, v2.z))
+            return false;
+        return true;
     }
 }
 
@@ -115,6 +183,35 @@ public class Enemy
         playerPositionRow = playerPos[1];
     }
 
+    float[] shift = { 0.5f, 0.5f, 0.2f, 0.2f, 0.8f, 0.8f, 0.2f, 0.8f, 0.8f, 0.2f };
+
+    public bool isEnemySeeable()
+    {
+        Vector2 playerPosition = MapLoader.WorldCoordsToMapCoordsFloat(new Vector2(player.position.x, player.position.z));
+        Vector2 enemyPosition = MapLoader.WorldCoordsToMapCoordsFloat(new Vector2(enemy.position.x, enemy.position.z));
+
+        Line l = new Line(playerPosition.x, playerPosition.y, enemyPosition.x, enemyPosition.y);
+
+        int minColumn = min(playerPositionColumn, positionColumn);
+        int maxColumn = max(playerPositionColumn, positionColumn) + 1;
+        int minRow = min(playerPositionRow, positionRow);
+        int maxRow = max(playerPositionRow, positionRow) + 1;
+
+        for (int i = minRow; i < maxRow; i++)
+        {
+            for (int j = minColumn; j < maxColumn; j++)
+            {
+                if (MapLoader.Map[i, j] == MapLoader.WALL)
+                {
+                    l.checkIntersect(j, i);
+                }
+            }
+        }
+        if (l.isIntersected())
+            return false;
+        return true;
+    }
+
     private bool isCellWorthReaching(int cellColumn, int cellRow)
     {
         
@@ -127,7 +224,12 @@ public class Enemy
 
         Vector2 playerPositionFloat = MapLoader.WorldCoordsToMapCoordsFloat(new Vector2(player.position.x, player.position.z));
 
-        Line l = new Line(playerPositionFloat.x, playerPositionFloat.y, cellColumn + 0.5, cellRow + 0.5);
+        Line[] lines = new Line[shift.Length / 2];
+        for(int i = 0;i<shift.Length/2;i++)
+        {
+            lines[i] = new Line(playerPositionFloat.x, playerPositionFloat.y, cellColumn + shift[i*2], cellRow +shift[i*2+1]);
+        }
+        //Line l = new Line(playerPositionFloat.x, playerPositionFloat.y, cellColumn + 0.5, cellRow + 0.5);
 
         int minColumn = min(playerPositionColumn, cellColumn);
         int maxColumn = max(playerPositionColumn, cellColumn) + 1;
@@ -138,15 +240,25 @@ public class Enemy
         {
             for (int j = minColumn; j < maxColumn; j++)
             {
-                if (MapLoader.Map[i, j] == MapLoader.WALL && l.intersect(j, i))
+                for(int k = 0;k<shift.Length/2;k++)
                 {
-                    return true;
+                    if (MapLoader.Map[i, j] == MapLoader.WALL)
+                    {
+                        lines[k].checkIntersect(j, i);
+                    }
                 }
                     
             }
         }
-        return false;
+        for (int i = 0; i < shift.Length / 2; i++)
+        {
+            if (!lines[i].isIntersected())
+                return false;
+        }
+        return true;
     }
+
+
 
     private CellList getClosestCellPath(int startColumn, int startRow)
     {
@@ -266,6 +378,7 @@ public class CellList
 public class Line
 {
     private double a, b;
+    private bool intersectedByWall = false;
 
     public Line(double x1, double y1, double x2, double y2)
     {
@@ -302,6 +415,18 @@ public class Line
         return a * x + b;
     }
 
+    public void checkIntersect(int cellX, int cellY)
+    {
+        if (intersectedByWall)
+            return;
+        intersectedByWall = intersect(cellX, cellY);
+    }
+
+    public bool isIntersected()
+    {
+        return intersectedByWall;
+    }
+
     private bool isBetween(int a, int b, double value)
     {
         if (a <= value && value <= b)
@@ -309,7 +434,7 @@ public class Line
         return false;
     }
 
-    public bool intersect(int cellX, int cellY)
+    private bool intersect(int cellX, int cellY)
     {
         if (isBetween(cellX, cellX + 1, getX(cellY)))
             return true;

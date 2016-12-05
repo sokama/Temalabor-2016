@@ -37,13 +37,14 @@ public class MapLoader : MonoBehaviour
 
     private void CreateWalls()
     {
+        wall.transform.localScale = new Vector3(2*mapCellSize/4.0f,1, 2 * mapCellSize / 4.0f);
         for (int row = 0; row < mapSizeY; row++)
         {
             for (int column = 0; column < mapSizeX; column++)
             {
                 if(map[row, column] == WALL)
                 {
-                    Vector2 coords = MapCoordsToWorldCoords(column, row);
+                    Vector2 coords = MapCoordsToWorldCoords(column, row);              
                     Instantiate(wall, new Vector3(coords.x, 1, coords.y), Quaternion.identity);
                 }
             }
@@ -54,7 +55,7 @@ public class MapLoader : MonoBehaviour
     {
         Transform floorTransform = (Transform)Instantiate(floor, new Vector3(0, -0.05f, 0), Quaternion.identity);
         Vector3 floorScale = floorTransform.localScale;
-        floorTransform.localScale = new Vector3(floorScale.x * mapSizeX, floorScale.y, floorScale.z * mapSizeY);
+        floorTransform.localScale = new Vector3(floorScale.x * mapSizeX * (mapCellSize / 4.0f), floorScale.y * (mapCellSize / 4.0f), floorScale.z * mapSizeY * (mapCellSize / 4.0f));
     }
 
     public static Vector2 MapCoordsToWorldCoords(int x, int y)

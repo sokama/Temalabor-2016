@@ -19,6 +19,7 @@ public class HidingFromPlayer : MonoBehaviour
     private MovingStrategy strategy;
     private static int enemyHealth = 100;
     private static bool healthChanged = false;
+    public static bool canshoot = false;
 
     public static Map Map;
 
@@ -44,11 +45,19 @@ public class HidingFromPlayer : MonoBehaviour
         if (strategy.isEnemySeeable())
         {
             n++;
-            rotateTower();
-            if (n == 60)
+            rotateTower();  
+            if (n == 40)
             {
                 n = 0;
                 shoot();
+            }
+            else if (n > 30)
+            {
+                canshoot = true;
+            }
+            else
+            {
+                canshoot = false;
             }
         }
     }
@@ -260,7 +269,10 @@ public class AttackingFromFarStrategy : MovingStrategy
 
     public override List<Cell> getEndCells()
     {
-        return Map.getGoodScoreCells(0, 1);
+        if (HidingFromPlayer.canshoot)
+            return Map.getGoodScoreCells(0, 1);
+        else
+            return Map.getGoodScoreCells(1, 0);
     }
 }
 

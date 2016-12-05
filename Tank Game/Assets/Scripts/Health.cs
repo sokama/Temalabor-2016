@@ -15,6 +15,8 @@ public class Health : MonoBehaviour {
     public void DecreaseHealth(float damage)
     {
         currentHealth -= damage;
+        if(this.tag == "Enemy")
+            HidingFromPlayer.notifiyHealth((int)currentHealth);
         Debug.Log("Health: " + currentHealth);
         if(currentHealth <= 0f)
         {

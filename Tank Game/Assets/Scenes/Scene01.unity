@@ -129,7 +129,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114000010334193468, guid: 809acbed7baa35344b120f0f92108d64,
+    - target: {fileID: 114000012714882614, guid: 809acbed7baa35344b120f0f92108d64,
         type: 2}
       propertyPath: mainCamera
       value: 
@@ -445,7 +445,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!1001 &1870441284
+--- !u!1001 &1364584611
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -484,7 +484,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114000010289899250, guid: 12467e4a713d7d849893cf7f8008900e,
+    - target: {fileID: 114000012035724010, guid: 12467e4a713d7d849893cf7f8008900e,
         type: 2}
       propertyPath: mainCamera
       value: 

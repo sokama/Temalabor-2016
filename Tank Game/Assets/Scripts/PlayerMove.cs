@@ -24,6 +24,17 @@ public class PlayerMove : MonoBehaviour
         RotateTower();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (GetComponent<TankShoot>().CanShoot())
+            {
+                GetComponent<TankShoot>().Shoot();
+            }
+        }
+    }
+
     private void MovePlayer()
     {
         transform.Rotate(Vector3.up * RotationSpeed * Input.GetAxisRaw("Horizontal") * Input.GetAxisRaw("Vertical") * Time.deltaTime);

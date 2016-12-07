@@ -26,8 +26,6 @@ public class Health : MonoBehaviour {
         if (this.tag == "Enemy")
             HidingFromPlayer.notifiyHealth((int)currentHealth);
 
-        Debug.Log("Health: " + currentHealth);
-
         if (currentHealth <= 0f)
         {
             Die();

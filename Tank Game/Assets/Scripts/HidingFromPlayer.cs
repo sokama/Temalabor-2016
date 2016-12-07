@@ -8,29 +8,22 @@ public class HidingFromPlayer : MonoBehaviour
 
     public float MovementSpeed;
     public float RotationSpeed;
+    public float MinimumWaitBetweenShoots = 0.1f;
+    private float waitBeforeShoot = 0f;
 
     public Transform player;
 
 
     int n = 0;
 
-    public GameObject Bullet;
-    public float BulletSpeed = 10f;
+    //public GameObject Bullet;
+    //public float BulletSpeed = 10f;
     private MovingStrategy strategy;
     private static int enemyHealth = 100;
     private static bool healthChanged = false;
     public static bool canshoot = false;
 
     public static Map Map;
-
-    // Use this for initialization
-    void Start()
-    {
-    }
-
-    void Awake()
-    {
-    }
 
     void Update()
     {
@@ -44,22 +37,36 @@ public class HidingFromPlayer : MonoBehaviour
         strategy.MoveEnemy();
         if (strategy.isEnemySeeable())
         {
-            n++;
-            rotateTower();  
-            if (n == 40)
+            //n++;
+            rotateTower();
+            //if (n == 40)
+            //{
+            //    n = 0;
+            //    shoot();
+            //}
+            //else if (n > 30)
+            //{
+            //    canshoot = true;
+            //}
+            //else
+            //{
+            //    canshoot = false;
+            //}
+            if (GetComponent<TankShoot>().CanShoot() && waitBeforeShoot <= 0f)
             {
-                n = 0;
-                shoot();
-            }
-            else if (n > 30)
-            {
-                canshoot = true;
-            }
-            else
-            {
-                canshoot = false;
+                GetComponent<TankShoot>().Shoot();
+                waitBeforeShoot = MinimumWaitBetweenShoots;
             }
         }
+
+        if (waitBeforeShoot > 0f)
+        {
+            waitBeforeShoot -= Time.deltaTime;
+            if (waitBeforeShoot < 0f)
+                waitBeforeShoot = 0f;
+        }
+
+        canshoot = GetComponent<TankShoot>().CanShoot() && waitBeforeShoot <= 0f;
     }
 
     private void makeStrategy()
@@ -110,14 +117,14 @@ public class HidingFromPlayer : MonoBehaviour
         tower.rotation = Quaternion.LookRotation(player.position - transform.position);
     }
 
-    private void shoot()
-    {
-        Transform shootingPoint = transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
-        GameObject bullet = (GameObject)Instantiate(Bullet, shootingPoint.position, shootingPoint.rotation);
+    //private void shoot()
+    //{
+    //    Transform shootingPoint = transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
+    //    GameObject bullet = (GameObject)Instantiate(Bullet, shootingPoint.position, shootingPoint.rotation);
 
-        Vector3 bulletVelocity = bullet.transform.forward * BulletSpeed;
-        bullet.GetComponent<Rigidbody>().velocity = bulletVelocity;
-    }
+    //    Vector3 bulletVelocity = bullet.transform.forward * BulletSpeed;
+    //    bullet.GetComponent<Rigidbody>().velocity = bulletVelocity;
+    //}
 
     private bool floatEquals(float f1, float f2)
     {

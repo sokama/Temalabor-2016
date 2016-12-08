@@ -23,14 +23,11 @@ public class Health : MonoBehaviour {
     {
         currentHealth -= damage;
 
-        if (this.tag == "Enemy")
-            HidingFromPlayer.notifiyHealth((int)currentHealth);
-
         if (currentHealth <= 0f)
         {
             Die();
         }
-
+        notifyEnemyHealthChange();
         UpdateHealthBar();
     }
 
@@ -48,7 +45,15 @@ public class Health : MonoBehaviour {
         currentHealth += healthRegenerationUnit;
         if (currentHealth > startHealth)
             currentHealth = startHealth;
+
+        notifyEnemyHealthChange();
         UpdateHealthBar();
+    }
+
+    private void notifyEnemyHealthChange()
+    {
+        if (this.tag == "Enemy")
+            HidingFromPlayer.notifiyHealth((int)currentHealth);
     }
 
     private void UpdateHealthBar()

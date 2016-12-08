@@ -339,6 +339,8 @@ public class Route
     }
 
     public int getH(List<Cell> endCells) {
+        if (endCells.Count == 0)
+            return -1;
         int min = 0;
         for (int i = 1; i < endCells.Count; i++)
         {
@@ -379,6 +381,10 @@ public class PathFinder
         while(true)
         {
             Route minRoute = getBestRoute(openCellList, endCells);
+            if(minRoute == null)
+            {
+                return null;
+            }
             if (endCells.Contains(minRoute.getLastCell()))
             {
                 pathToEnd = minRoute;
@@ -400,6 +406,8 @@ public class PathFinder
 
     private Route getBestRoute(List<Route> routes, List<Cell> endCells)
     {
+        if (routes.Count == 0)
+            return null;
         int min = 0;
         for(int i = 1; i<routes.Count;i++)
         {
@@ -562,7 +570,7 @@ public class Cell
         for (int i = 0; i < neighbours.Length; i += 2)
         {
             Cell c = Map.getCell(columnPosition + neighbours[i], rowPosition + neighbours[i+1]);
-            if (c != null && !c.isWall() && c.distance == distance)
+            if (c != null && !c.isWall())
                 notWallNeughbours.Add(c);
         }
         return notWallNeughbours;

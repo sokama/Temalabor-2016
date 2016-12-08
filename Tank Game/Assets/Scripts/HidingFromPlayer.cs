@@ -8,7 +8,7 @@ public class HidingFromPlayer : MonoBehaviour
 
     public float MovementSpeed;
     public float RotationSpeed;
-    public float MinimumWaitBetweenShoots = 0.1f;
+    public float MinimumWaitBetweenShoots = 0.3f;
     private float waitBeforeShoot = 0f;
 
     public Transform player;
@@ -35,23 +35,9 @@ public class HidingFromPlayer : MonoBehaviour
             healthChanged = false;
         }
         strategy.MoveEnemy();
-        if (strategy.isEnemySeeable())
+        if (strategy.isPlayerShootable())
         {
-            //n++;
             rotateTower();
-            //if (n == 40)
-            //{
-            //    n = 0;
-            //    shoot();
-            //}
-            //else if (n > 30)
-            //{
-            //    canshoot = true;
-            //}
-            //else
-            //{
-            //    canshoot = false;
-            //}
             if (GetComponent<TankShoot>().CanShoot() && waitBeforeShoot <= 0f)
             {
                 GetComponent<TankShoot>().Shoot();
@@ -117,15 +103,6 @@ public class HidingFromPlayer : MonoBehaviour
         tower.rotation = Quaternion.LookRotation(player.position - transform.position);
     }
 
-    //private void shoot()
-    //{
-    //    Transform shootingPoint = transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
-    //    GameObject bullet = (GameObject)Instantiate(Bullet, shootingPoint.position, shootingPoint.rotation);
-
-    //    Vector3 bulletVelocity = bullet.transform.forward * BulletSpeed;
-    //    bullet.GetComponent<Rigidbody>().velocity = bulletVelocity;
-    //}
-
     private bool floatEquals(float f1, float f2)
     {
         float d = 0.001f;
@@ -153,6 +130,7 @@ public abstract class MovingStrategy
     private Transform player;
     private Transform enemy;
     private HidingFromPlayer enemyControl;
+    private bool couldshoot = true;
 
     protected Cell enemyPosition;
     protected Cell playerPosition;
@@ -185,7 +163,7 @@ public abstract class MovingStrategy
         }
         return false;
     }
-    public bool isEnemySeeable()
+    public bool isPlayerShootable()
     {
         Vector2 realPlayerPosition = MapLoader.WorldCoordsToMapCoordsFloat(new Vector2(player.position.x, player.position.z));
         Vector2 realEnemyPosition = MapLoader.WorldCoordsToMapCoordsFloat(new Vector2(enemy.position.x, enemy.position.z));
@@ -230,7 +208,7 @@ public abstract class MovingStrategy
             targetRoute = null;
         }
 
-        if(targetRoute == null)
+        if(targetRoute == null || couldshoot != HidingFromPlayer.canshoot)
         {
             PathFinder pf = new PathFinder(Map.getIntArray());
             targetRoute = pf.searchRoute(enemyPosition, getEndCells());
@@ -248,6 +226,7 @@ public abstract class MovingStrategy
                 enemyControl.moveEnemy(nextCell.getColumn(), nextCell.getRow());
             }
         }
+        couldshoot = HidingFromPlayer.canshoot;
     }
 
     public abstract List<Cell> getEndCells();
@@ -583,7 +562,7 @@ public class Cell
         for (int i = 0; i < neighbours.Length; i += 2)
         {
             Cell c = Map.getCell(columnPosition + neighbours[i], rowPosition + neighbours[i+1]);
-            if (c != null && !c.isWall())
+            if (c != null && !c.isWall() && c.distance == distance)
                 notWallNeughbours.Add(c);
         }
         return notWallNeughbours;

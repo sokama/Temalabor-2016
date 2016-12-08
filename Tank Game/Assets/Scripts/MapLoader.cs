@@ -13,7 +13,7 @@ public class MapLoader : MonoBehaviour
 
     private static int mapSizeX = 12;
     private static int mapSizeY = 12;
-    private static int mapCellSize = 4;
+    private static int mapCellSize = 5;
     private static int[,] map = { { -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2 },
                                 { -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2 },
                                 { -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2 },

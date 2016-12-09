@@ -36,6 +36,8 @@ public class Health : MonoBehaviour {
         GameObject explosion = (GameObject)Instantiate(explosionParticles, transform.position, transform.rotation);
         Destroy(explosion, 2f);
 
+        GameController.instance.GameOver(this.tag);
+
         Destroy(gameObject);
         return;
     }

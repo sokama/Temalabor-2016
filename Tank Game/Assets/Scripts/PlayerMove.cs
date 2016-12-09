@@ -12,6 +12,8 @@ public class PlayerMove : MonoBehaviour
     int raycastFloorMask;
     float raycastLength = 100f;
 
+    public bool isControllable = true;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,19 +22,26 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovePlayer();
-        RotateTower();
+        if (isControllable)
+        {
+            MovePlayer();
+            RotateTower();
+        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (isControllable)
         {
-            if (GetComponent<TankShoot>().CanShoot())
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                GetComponent<TankShoot>().Shoot();
+                if (GetComponent<TankShoot>().CanShoot())
+                {
+                    GetComponent<TankShoot>().Shoot();
+                }
             }
         }
+
     }
 
     private void MovePlayer()

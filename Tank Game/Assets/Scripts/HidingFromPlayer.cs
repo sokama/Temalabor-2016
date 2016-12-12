@@ -5,7 +5,6 @@ using System;
 //TODO: Rename script (e.g EnemyController)
 public class HidingFromPlayer : MonoBehaviour
 {
-
     public float MovementSpeed;
     public float RotationSpeed;
     public float MinimumWaitBetweenShoots = 0.3f;
@@ -235,6 +234,7 @@ public abstract class MovingStrategy
 
 public class FollowingStrategy : MovingStrategy
 {
+    public static int DistanceFromTarget = 2;
     public FollowingStrategy(HidingFromPlayer hfp) : base(hfp)
     {
 
@@ -242,7 +242,15 @@ public class FollowingStrategy : MovingStrategy
 
     public override List<Cell> getEndCells()
     {
-        return playerPosition.getNotWallNeighbours();
+        List<Cell> targetCells = Map.getGoodScoreCells(0, -1);
+        for(int i = 0;i<targetCells.Count;i++)
+        {
+            if(targetCells[i].getDistance() != DistanceFromTarget)
+            {
+                targetCells.RemoveAt(i--);
+            }
+        }
+        return targetCells;
     }
 }
 

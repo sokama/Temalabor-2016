@@ -1394,7 +1394,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floor: {fileID: 4000010284382582, guid: fae826faeec9f164e935813411308209, type: 2}
-  wall: {fileID: 1000010737937214, guid: f7ae2c8bc7f8cb0458633af17df9196d, type: 2}
+  wallDestructible: {fileID: 1000010737937214, guid: f7ae2c8bc7f8cb0458633af17df9196d,
+    type: 2}
+  wallNotDestructible: {fileID: 1000012341925508, guid: 8b659d55016781249b7851ff4894a3ca,
+    type: 2}
 --- !u!1 &1047106920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,7 +1908,7 @@ Prefab:
       objectReference: {fileID: 603862434}
     - target: {fileID: 1000012761228372, guid: 12467e4a713d7d849893cf7f8008900e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12467e4a713d7d849893cf7f8008900e, type: 2}

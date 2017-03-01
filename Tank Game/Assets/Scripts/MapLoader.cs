@@ -6,26 +6,28 @@ public class MapLoader : MonoBehaviour
 {
 
     public Transform floor;
-    public GameObject wall;
+    public GameObject wallDestructible;
+    public GameObject wallNotDestructible;
 
     public const int FIELD = -1;
-    public const int WALL = -2;
+    public const int WALL_DESTRUCTIBLE = -2;
+    public const int WALL_NOTDESTRUCTIBLE = -3;
 
     private static int mapSizeX = 12;
     private static int mapSizeY = 12;
     private static int mapCellSize = 5;
-    private static int[,] map = { { -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2 },
-                                { -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2 },
-                                { -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2 },
-                                { -2, -1, -1, -1, -2, -2, -2, -2, -1, -1, -1, -2 },
-                                { -2, -1, -1, -1, -2, -1, -1, -2, -1, -2, -2, -2 },
-                                { -2, -1, -2, -1, -2, -1, -1, -2, -1, -2, -1, -2 },
-                                { -2, -1, -1, -1, -2, -1, -1, -2, -1, -1, -1, -2 },
-                                { -2, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -2 },
-                                { -2, -1, -1, -2, -1, -1, -1, -1, -2, -1, -1, -2 },
-                                { -2, -1, -1, -1, -2, -1, -1, -2, -1, -1, -1, -2 },
-                                { -2, -1, -1, -1, -2, -1, -1, -2, -1, -1, -1, -2 },
-                                { -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2 }};
+    private static int[,] map = { { -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3 },
+                                { -3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -3 },
+                                { -3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -3 },
+                                { -3, -1, -1, -1, -2, -2, -2, -2, -1, -1, -1, -3 },
+                                { -3, -1, -1, -1, -3, -1, -1, -3, -1, -2, -2, -3 },
+                                { -3, -1, -3, -1, -3, -1, -1, -3, -1, -3, -1, -3 },
+                                { -3, -1, -1, -1, -2, -1, -1, -2, -1, -1, -1, -3 },
+                                { -3, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -3 },
+                                { -3, -1, -1, -3, -1, -1, -1, -1, -3, -1, -1, -3 },
+                                { -3, -1, -1, -1, -2, -1, -1, -2, -1, -1, -1, -3 },
+                                { -3, -1, -1, -1, -2, -1, -1, -2, -1, -1, -1, -3 },
+                                { -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3, -3 }};
 
 
     void Start()
@@ -42,10 +44,15 @@ public class MapLoader : MonoBehaviour
         {
             for (int column = 0; column < mapSizeX; column++)
             {
-                if(map[row, column] == WALL)
+                if(map[row, column] == WALL_DESTRUCTIBLE)
                 {
                     Vector2 coords = MapCoordsToWorldCoords(column, row);              
-                    Instantiate(wall, new Vector3(coords.x, 1, coords.y), Quaternion.identity);
+                    Instantiate(wallDestructible, new Vector3(coords.x, 1, coords.y), Quaternion.identity);
+                }
+                if (map[row, column] == WALL_NOTDESTRUCTIBLE)
+                {
+                    Vector2 coords = MapCoordsToWorldCoords(column, row);
+                    Instantiate(wallNotDestructible, new Vector3(coords.x, 1, coords.y), Quaternion.identity);
                 }
             }
         }

@@ -658,8 +658,8 @@ public class Map
         {
             for (int j = 0; j < sizeRow; j++)
             {
-                cells[i, j] = new Cell(this, i, j, map[j, i] == MapLoader.WALL);
-                if (map[i, j] != MapLoader.WALL)
+                cells[i, j] = new Cell(this, i, j, (map[j, i] == MapLoader.WALL_DESTRUCTIBLE) || (map[j, i] == MapLoader.WALL_NOTDESTRUCTIBLE));
+                if ((map[i, j] != MapLoader.WALL_DESTRUCTIBLE) && (map[i, j] != MapLoader.WALL_NOTDESTRUCTIBLE))
                     numberOfFields++;
             }
         }
@@ -804,7 +804,7 @@ public class Map
         {
             for(int j = 0;j<sizeRow;j++)
             {
-                map[i, j] = cells[i, j].isWall() ? MapLoader.WALL : MapLoader.FIELD;
+                map[i, j] = cells[i, j].isWall() ? MapLoader.WALL_DESTRUCTIBLE : MapLoader.FIELD;
             }
         }
         return map;

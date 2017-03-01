@@ -22,6 +22,12 @@ public class BulletExplode : MonoBehaviour {
             col.GetComponent<Health>().DecreaseHealth(Damage);
         }
 
+        if(col.GetComponent<Destructible>() != null)
+        {
+            Debug.Log("Destruct");
+            col.GetComponent<Destructible>().Destruct();
+        }
+
         Explode();
     }
 

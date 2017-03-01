@@ -37,7 +37,7 @@ public class MapLoader : MonoBehaviour
 
     private void CreateWalls()
     {
-        wall.transform.localScale = new Vector3(2*mapCellSize/4.0f,1, 2 * mapCellSize / 4.0f);
+        //wall.transform.localScale = new Vector3(2*mapCellSize/4.0f,1, 2 * mapCellSize / 4.0f);
         for (int row = 0; row < mapSizeY; row++)
         {
             for (int column = 0; column < mapSizeX; column++)

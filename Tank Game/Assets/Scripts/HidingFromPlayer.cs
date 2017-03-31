@@ -5,8 +5,8 @@ using System;
 //TODO: Rename script (e.g EnemyController)
 public class HidingFromPlayer : MonoBehaviour
 {
-    public float MovementSpeed;
-    public float RotationSpeed;
+    //public float MovementSpeed;
+    //public float RotationSpeed;
     public float MinimumWaitBetweenShoots = 0.3f;
     private float waitBeforeShoot = 0f;
 
@@ -87,11 +87,11 @@ public class HidingFromPlayer : MonoBehaviour
         Vector3 nextPosition = new Vector3(nextPositionXY.x, currentPosition.y, nextPositionXY.y);
         Vector3 distanceVector = nextPosition - currentPosition;
 
-        Vector3 newPosition = Vector3.MoveTowards(transform.position, currentPosition + transform.forward, MovementSpeed * Time.deltaTime);
+        Vector3 newPosition = Vector3.MoveTowards(transform.position, currentPosition + transform.forward, GetComponent<TankMovementParameters>().tankMovementSpeed * Time.deltaTime);
         if (!vectorEquals(newPosition, transform.position))
         {
             transform.position = newPosition;
-            transform.forward = Vector3.RotateTowards(transform.forward, distanceVector, RotationSpeed * Time.deltaTime, 0.0f);
+            transform.forward = Vector3.RotateTowards(transform.forward, distanceVector, GetComponent<TankMovementParameters>().tankRotationSpeed * Time.deltaTime, 0.0f);
 
         }
     }

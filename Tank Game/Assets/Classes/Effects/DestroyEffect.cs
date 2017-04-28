@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Classes.Effects
 {
-    class DestroyEffect : Effect
+    class DestroyEffect : InstantEffect
     {
         public override void Affect(GameObject target)
         {

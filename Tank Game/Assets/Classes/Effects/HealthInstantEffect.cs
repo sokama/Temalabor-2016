@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Classes.Effects
 {
-    public class HealthEffect : Effect
+    public class HealthInstantEffect : InstantEffect
     {
         public int healthModifier = 0;
 

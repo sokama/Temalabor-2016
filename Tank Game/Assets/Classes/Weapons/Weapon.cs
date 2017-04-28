@@ -7,21 +7,38 @@ namespace Assets.Classes.Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {
-        private List<Effect> effects = new List<Effect>();
+        private List<InstantEffect> instantEffects = new List<InstantEffect>();
+        private List<LongEffect> longEffects = new List<LongEffect>();
 
-        public void AddEffect(Effect newEffect)
+        public void AddInstantEffect(InstantEffect newEffect)
         {
             if (newEffect != null)
-                effects.Add(newEffect);
+                instantEffects.Add(newEffect);
         }
 
-        protected void ActivateEffects(GameObject target)
+        public void AddLongEffect(LongEffect newEffect)
         {
-            foreach (Effect e in effects)
-                e.Affect(target);
+            if (newEffect != null)
+                longEffects.Add(newEffect);
         }
 
-        protected abstract void Hit();
+        protected void ActivateInstantEffects(GameObject target)
+        {
+            foreach (InstantEffect ie in instantEffects)
+                ie.Affect(target);
+        }
+
+        protected void PassLongEffectsToTarget(GameObject target)
+        {
+            LongEffectHandler effectHandler = target.GetComponent<LongEffectHandler>();
+            if (effectHandler != null)
+            {
+                foreach (LongEffect effect in longEffects)
+                    effectHandler.AddLongEffect(effect.Clone());
+            }
+        }
+
+        protected abstract void Hit(); //TODO: kell ez a fuggveny?..
 
         public abstract void Fire();
     }

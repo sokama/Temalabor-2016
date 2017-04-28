@@ -46,8 +46,8 @@ public class PlayerMove : MonoBehaviour
 
     private void MovePlayer()
     {
-        transform.Rotate(Vector3.up * GetComponent<TankMovementParameters>().tankRotationSpeed * Input.GetAxisRaw("Horizontal") * Input.GetAxisRaw("Vertical") * Time.deltaTime);
-        Vector3 newVelocity = transform.forward * GetComponent<TankMovementParameters>().tankMovementSpeed * Input.GetAxisRaw("Vertical");
+        transform.Rotate(Vector3.up * GetComponent<TankMovementParameters>().TankRotationSpeed * Input.GetAxisRaw("Horizontal") * Input.GetAxisRaw("Vertical") * Time.deltaTime);
+        Vector3 newVelocity = transform.forward * GetComponent<TankMovementParameters>().TankMovementSpeed * Input.GetAxisRaw("Vertical");
         rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
     }
 

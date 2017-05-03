@@ -34,6 +34,12 @@ public class TankMovementParameters : MonoBehaviour {
     //    tankRotationSpeed = newValue;
     //}
 
+    void Awake()
+    {
+        ResetTankMovementSpeed();
+        ResetTankRotationSpeed();
+    }
+
     public void ResetTankMovementSpeed()
     {
         TankMovementSpeed = defaultTankMovementSpeed;

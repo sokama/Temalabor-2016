@@ -38,8 +38,6 @@ namespace Assets.Classes.Weapons
             }
         }
 
-        protected abstract void Hit(); //TODO: kell ez a fuggveny?..
-
         public abstract void Fire();
     }
 }

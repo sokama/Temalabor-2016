@@ -6,7 +6,7 @@ namespace Assets.Classes.Effects
 {
     public class HealthInstantEffect : InstantEffect
     {
-        public int healthModifier = 0;
+        public float healthModifier = 0;
 
         public override void Affect(GameObject target)
         {

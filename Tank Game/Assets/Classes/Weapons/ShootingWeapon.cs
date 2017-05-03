@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Classes.Effects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,6 +61,8 @@ namespace Assets.Classes.Weapons
                 return;
 
             GameObject bullet = (GameObject) Instantiate(BulletPrefab, ShootingPoint.position, ShootingPoint.rotation);
+
+            bullet.GetComponent<Bullet>().SetEffectHolder(effectHolder);
 
             Vector3 bulletVelocity = bullet.transform.forward * BulletSpeed;
             bullet.GetComponent<Rigidbody>().velocity = bulletVelocity;

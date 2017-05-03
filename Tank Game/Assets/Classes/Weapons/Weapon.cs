@@ -7,36 +7,38 @@ namespace Assets.Classes.Weapons
 {
     public abstract class Weapon : MonoBehaviour
     {
-        private List<InstantEffect> instantEffects = new List<InstantEffect>();
-        private List<LongEffect> longEffects = new List<LongEffect>();
+        //protected List<InstantEffect> instantEffects = new List<InstantEffect>();
+        //protected List<LongEffect> longEffects = new List<LongEffect>();
+
+        protected EffectHolder effectHolder = new EffectHolder();
 
         public void AddInstantEffect(InstantEffect newEffect)
         {
             if (newEffect != null)
-                instantEffects.Add(newEffect);
+                effectHolder.InstantEffects.Add(newEffect);
         }
 
         public void AddLongEffect(LongEffect newEffect)
         {
             if (newEffect != null)
-                longEffects.Add(newEffect);
+                effectHolder.LongEffects.Add(newEffect);
         }
 
-        protected void ActivateInstantEffects(GameObject target)
-        {
-            foreach (InstantEffect ie in instantEffects)
-                ie.Affect(target);
-        }
+        //protected void ActivateInstantEffects(GameObject target)
+        //{
+        //    foreach (InstantEffect ie in instantEffects)
+        //        ie.Affect(target);
+        //}
 
-        protected void PassLongEffectsToTarget(GameObject target)
-        {
-            LongEffectHandler effectHandler = target.GetComponent<LongEffectHandler>();
-            if (effectHandler != null)
-            {
-                foreach (LongEffect effect in longEffects)
-                    effectHandler.AddLongEffect(effect.Clone());
-            }
-        }
+        //protected void PassLongEffectsToTarget(GameObject target)
+        //{
+        //    LongEffectHandler effectHandler = target.GetComponent<LongEffectHandler>();
+        //    if (effectHandler != null)
+        //    {
+        //        foreach (LongEffect effect in longEffects)
+        //            effectHandler.AddLongEffect(effect.Clone());
+        //    }
+        //}
 
         public abstract void Fire();
     }

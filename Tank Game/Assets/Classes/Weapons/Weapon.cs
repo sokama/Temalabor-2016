@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Assets.Classes.Weapons
 {
-    public abstract class Weapon : MonoBehaviour
+    public abstract class Weapon : ScriptableObject
     {
         //protected List<InstantEffect> instantEffects = new List<InstantEffect>();
         //protected List<LongEffect> longEffects = new List<LongEffect>();

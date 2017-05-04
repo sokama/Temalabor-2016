@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Classes.Weapons;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -34,12 +35,9 @@ public class PlayerMove : MonoBehaviour
         if (isControllable)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                if (GetComponent<TankShoot>().CanShoot())
-                {
-                    GetComponent<TankShoot>().Shoot();
-                }
-            }
+                GetComponent<WeaponHolder>().FirePrimaryWeapon();
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+                GetComponent<WeaponHolder>().FireSecondaryWeapon();
         }
 
     }

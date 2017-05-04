@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Assets.Classes.Effects
 {
-    public abstract class LongEffect : MonoBehaviour
+    public abstract class LongEffect
     {
         public float duration;
 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Assets.Classes.Weapons;
 
 //TODO: Rename script (e.g EnemyController)
 public class HidingFromPlayer : MonoBehaviour
@@ -37,9 +38,13 @@ public class HidingFromPlayer : MonoBehaviour
         if (strategy.isPlayerShootable())
         {
             rotateTower();
-            if (GetComponent<TankShoot>().CanShoot() && waitBeforeShoot <= 0f)
+            if (GetComponent<WeaponHolder>().PrimaryWeaponCanShoot() && waitBeforeShoot <= 0f)
             {
-                GetComponent<TankShoot>().Shoot();
+                GetComponent<WeaponHolder>().FirePrimaryWeapon();
+                waitBeforeShoot = MinimumWaitBetweenShoots;
+            } else if (GetComponent<WeaponHolder>().SecondaryWeaponCanShoot() && waitBeforeShoot <= 0f)
+            {
+                GetComponent<WeaponHolder>().FireSecondaryWeapon();
                 waitBeforeShoot = MinimumWaitBetweenShoots;
             }
         }
@@ -51,7 +56,8 @@ public class HidingFromPlayer : MonoBehaviour
                 waitBeforeShoot = 0f;
         }
 
-        canshoot = GetComponent<TankShoot>().CanShoot() && waitBeforeShoot <= 0f;
+        canshoot = (GetComponent<WeaponHolder>().PrimaryWeaponCanShoot() || GetComponent<WeaponHolder>().SecondaryWeaponCanShoot())
+            && waitBeforeShoot <= 0f;
     }
 
     private void makeStrategy()

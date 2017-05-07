@@ -51,7 +51,7 @@ namespace Assets.Classes.Weapons
             NumberOfBullets = defaultNumberOfBullets;
         }
 
-        protected bool CanShoot()
+        public override bool CanShoot()
         {
             return NumberOfBullets > 0;
         }

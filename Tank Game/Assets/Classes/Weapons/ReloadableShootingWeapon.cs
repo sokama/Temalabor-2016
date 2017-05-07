@@ -15,7 +15,7 @@ namespace Assets.Classes.Weapons
         protected override void Awake()
         {
             base.Awake();
-            Debug.Log("SRW meghivva");
+            Debug.Log("RSW meghivva");
             ResetReloadTime();
         }
 

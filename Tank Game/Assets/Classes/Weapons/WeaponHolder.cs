@@ -30,5 +30,15 @@ namespace Assets.Classes.Weapons
         {
             secondaryWeapon.Fire();
         }
+
+        public bool PrimaryWeaponCanShoot()
+        {
+            return primaryWeapon.CanShoot();
+        }
+
+        public bool SecondaryWeaponCanShoot()
+        {
+            return secondaryWeapon.CanShoot();
+        }
     }
 }

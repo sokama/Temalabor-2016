@@ -12,6 +12,7 @@ public class InitializeTanks : MonoBehaviour
 
     void Awake()
     {
+        //Player weapon init
         ShootingWeapon playerPrimaryWeapon = (ShootingWeapon)ScriptableObject.CreateInstance("ShootingWeapon");
         playerPrimaryWeapon.BulletPrefab = BulletPrefab;
         playerPrimaryWeapon.ShootingPoint = Player.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
@@ -28,5 +29,23 @@ public class InitializeTanks : MonoBehaviour
 
         Player.GetComponent<WeaponHolder>().SetPrimaryWeapon(playerPrimaryWeapon);
         Player.GetComponent<WeaponHolder>().SetSecondaryWeapon(playerSecondaryWeapon);
+
+        //Enemy weapon init
+        ShootingWeapon enemyPrimaryWeapon = (ShootingWeapon)ScriptableObject.CreateInstance("ShootingWeapon");
+        enemyPrimaryWeapon.BulletPrefab = BulletPrefab;
+        enemyPrimaryWeapon.ShootingPoint = Enemy.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
+        enemyPrimaryWeapon.defaultBulletSpeed = 10f;
+        enemyPrimaryWeapon.defaultNumberOfBullets = 3;
+        enemyPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -10f });
+
+        ShootingWeapon enemySecondaryWeapon = (ShootingWeapon)ScriptableObject.CreateInstance("ShootingWeapon");
+        enemySecondaryWeapon.BulletPrefab = BulletPrefab;
+        enemySecondaryWeapon.ShootingPoint = Enemy.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
+        enemySecondaryWeapon.defaultBulletSpeed = 10f;
+        enemySecondaryWeapon.defaultNumberOfBullets = 3;
+        enemySecondaryWeapon.AddInstantEffect(new DestroyEffect());
+
+        Enemy.GetComponent<WeaponHolder>().SetPrimaryWeapon(enemyPrimaryWeapon);
+        Enemy.GetComponent<WeaponHolder>().SetSecondaryWeapon(enemySecondaryWeapon);
     }
 }

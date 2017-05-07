@@ -34,8 +34,9 @@ namespace Assets.Classes.Weapons
             }
         }
 
-        void Awake()
+        protected virtual void Awake()
         {
+            Debug.Log("SW Awake meghivva");
             ResetBulletSpeed();
             ReloadAllBullets();
         }

@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Assets.Classes.Weapons;
 
 //TODO: Rename script (e.g EnemyController)
 public class HidingFromPlayer : MonoBehaviour
 {
-    public float MovementSpeed;
-    public float RotationSpeed;
+    //public float MovementSpeed;
+    //public float RotationSpeed;
     public float MinimumWaitBetweenShoots = 0.3f;
     private float waitBeforeShoot = 0f;
 
@@ -37,9 +38,13 @@ public class HidingFromPlayer : MonoBehaviour
         if (strategy.isPlayerShootable())
         {
             rotateTower();
-            if (GetComponent<TankShoot>().CanShoot() && waitBeforeShoot <= 0f)
+            if (GetComponent<WeaponHolder>().PrimaryWeaponCanShoot() && waitBeforeShoot <= 0f)
             {
-                GetComponent<TankShoot>().Shoot();
+                GetComponent<WeaponHolder>().FirePrimaryWeapon();
+                waitBeforeShoot = MinimumWaitBetweenShoots;
+            } else if (GetComponent<WeaponHolder>().SecondaryWeaponCanShoot() && waitBeforeShoot <= 0f)
+            {
+                GetComponent<WeaponHolder>().FireSecondaryWeapon();
                 waitBeforeShoot = MinimumWaitBetweenShoots;
             }
         }
@@ -51,7 +56,8 @@ public class HidingFromPlayer : MonoBehaviour
                 waitBeforeShoot = 0f;
         }
 
-        canshoot = GetComponent<TankShoot>().CanShoot() && waitBeforeShoot <= 0f;
+        canshoot = (GetComponent<WeaponHolder>().PrimaryWeaponCanShoot() || GetComponent<WeaponHolder>().SecondaryWeaponCanShoot())
+            && waitBeforeShoot <= 0f;
     }
 
     private void makeStrategy()
@@ -87,11 +93,11 @@ public class HidingFromPlayer : MonoBehaviour
         Vector3 nextPosition = new Vector3(nextPositionXY.x, currentPosition.y, nextPositionXY.y);
         Vector3 distanceVector = nextPosition - currentPosition;
 
-        Vector3 newPosition = Vector3.MoveTowards(transform.position, currentPosition + transform.forward, MovementSpeed * Time.deltaTime);
+        Vector3 newPosition = Vector3.MoveTowards(transform.position, currentPosition + transform.forward, GetComponent<TankMovementParameters>().TankMovementSpeed * Time.deltaTime);
         if (!vectorEquals(newPosition, transform.position))
         {
             transform.position = newPosition;
-            transform.forward = Vector3.RotateTowards(transform.forward, distanceVector, RotationSpeed * Time.deltaTime, 0.0f);
+            transform.forward = Vector3.RotateTowards(transform.forward, distanceVector, GetComponent<TankMovementParameters>().TankRotationSpeed * Time.deltaTime, 0.0f);
 
         }
     }

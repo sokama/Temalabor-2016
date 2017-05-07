@@ -246,6 +246,7 @@ GameObject:
   - 65: {fileID: 65000012354678296}
   - 114: {fileID: 114000012670741098}
   - 114: {fileID: 114000010645110002}
+  - 114: {fileID: 114000013105016068}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -886,10 +887,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71719fefa37544b45b6f7959a561f802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 7
-  RotationSpeed: 5
   MinimumWaitBetweenShoots: 0.2
   player: {fileID: 0}
+--- !u!114 &114000013105016068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012761228372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85a7908b8294874a8865bf6f88f494a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankMovementSpeed: 7
+  tankRotationSpeed: 5
 --- !u!114 &114000013207245502
 MonoBehaviour:
   m_ObjectHideFlags: 1

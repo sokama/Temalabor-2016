@@ -325,6 +325,7 @@ GameObject:
   - 65: {fileID: 65000010359749540}
   - 114: {fileID: 114000011415556960}
   - 114: {fileID: 114000013159971884}
+  - 114: {fileID: 114000012500479370}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -810,6 +811,19 @@ MonoBehaviour:
   bulletSpeed: 10
   numberOfBullets: 3
   reloadTime: 3
+--- !u!114 &114000012500479370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014159855104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85a7908b8294874a8865bf6f88f494a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tankMovementSpeed: 7
+  tankRotationSpeed: 100
 --- !u!114 &114000012714882614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -904,8 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8a9ad98469276478b22342b42b0c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 7
-  RotationSpeed: 100
+  isControllable: 1
 --- !u!114 &114000013577464180
 MonoBehaviour:
   m_ObjectHideFlags: 1

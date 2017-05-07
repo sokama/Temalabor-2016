@@ -41,7 +41,7 @@ GameObject:
   - 95: {fileID: 95000010192997746}
   - 65: {fileID: 65000012236222260}
   - 54: {fileID: 54000013145459752}
-  - 114: {fileID: 114000013967825594}
+  - 114: {fileID: 114000010747110236}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -156,7 +156,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000013967825594
+--- !u!114 &114000010747110236
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -164,12 +164,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012684139776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a63c3cc5dfc803e4ba32e3dcfea7f924, type: 3}
+  m_Script: {fileID: 11500000, guid: de9a7f2a5b5eaf54e83a09336fabcff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
-  PlayerTag: Player
-  EnemyTag: Enemy
   ExplosionParticles: {fileID: 1000010175364286, guid: 726c3810d05791d46bc39e8e1e166b78,
     type: 2}
 --- !u!198 &198000013712318302

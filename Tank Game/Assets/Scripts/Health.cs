@@ -2,14 +2,15 @@
 using System.Collections;
 using System;
 
-public class Health : MonoBehaviour {
-
+public class Health : MonoBehaviour
+{
     public GameObject explosionParticles;
     public GameObject healthBar;
 
     public float startHealth = 100f;
     public float healthRegenerationUnit = 1f;
     public float healthRegenerationTime = 1f;
+    public float damageIntakeMultiplier = 1f;
 
     private float currentHealth;
 
@@ -21,12 +22,17 @@ public class Health : MonoBehaviour {
 
     public void DecreaseHealth(float damage)
     {
+        //if damage is not negative (so it's not healing the tank), we need to apply the damageIntakeMultiplier
+        if (damage > 0)
+            damage *= damageIntakeMultiplier;
+
         currentHealth -= damage;
 
         if (currentHealth <= 0f)
-        {
             Die();
-        }
+        else if (currentHealth > startHealth)
+            currentHealth = startHealth;
+
         notifyEnemyHealthChange();
         UpdateHealthBar();
     }

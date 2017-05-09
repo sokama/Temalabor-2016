@@ -43,18 +43,24 @@ public class InitializeTanks : MonoBehaviour
         enemyPrimaryWeapon.ShootingPoint = Enemy.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
         enemyPrimaryWeapon.defaultBulletSpeed = 10f;
         enemyPrimaryWeapon.ResetBulletSpeed();
-        enemyPrimaryWeapon.defaultNumberOfBullets = 3;
+        enemyPrimaryWeapon.defaultNumberOfBullets = 1;
         enemyPrimaryWeapon.ReloadAllBullets();
         enemyPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -10f });
+        enemyPrimaryWeapon.AddLongEffect(new MovementEffect() { movementSpeedMultiplier = 0, rotationSpeedMultiplier = 0, duration = 5 });
+        enemyPrimaryWeapon.AddLongEffect(new DamageModifierEffect() { damageMultiplier = 5, duration = 10 });
 
-        ShootingWeapon enemySecondaryWeapon = (ShootingWeapon)ScriptableObject.CreateInstance("ShootingWeapon");
+        ReloadableShootingWeapon enemySecondaryWeapon = (ReloadableShootingWeapon)ScriptableObject.CreateInstance("ReloadableShootingWeapon");
         enemySecondaryWeapon.BulletPrefab = BulletPrefab;
         enemySecondaryWeapon.ShootingPoint = Enemy.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
         enemySecondaryWeapon.defaultBulletSpeed = 10f;
         enemySecondaryWeapon.ResetBulletSpeed();
-        enemySecondaryWeapon.defaultNumberOfBullets = 3;
+        enemySecondaryWeapon.defaultNumberOfBullets = 1;
         enemySecondaryWeapon.ReloadAllBullets();
-        enemySecondaryWeapon.AddInstantEffect(new DestroyEffect());
+        enemySecondaryWeapon.defaultReloadTime = 10f;
+        enemySecondaryWeapon.ResetReloadTime();
+        enemySecondaryWeapon.DummyMonoBehaviourForStartingCoroutines = this;
+        //enemySecondaryWeapon.AddInstantEffect(new DestroyEffect());
+        enemySecondaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -10f });
 
         Enemy.GetComponent<WeaponHolder>().SetPrimaryWeapon(enemyPrimaryWeapon);
         Enemy.GetComponent<WeaponHolder>().SetSecondaryWeapon(enemySecondaryWeapon);

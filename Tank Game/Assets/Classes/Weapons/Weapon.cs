@@ -40,7 +40,7 @@ namespace Assets.Classes.Weapons
         //    }
         //}
 
-        public abstract void Fire();
+        public abstract bool Fire();
 
         public abstract bool CanShoot();
     }

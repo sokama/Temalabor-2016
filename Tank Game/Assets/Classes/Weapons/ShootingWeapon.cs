@@ -31,6 +31,8 @@ namespace Assets.Classes.Weapons
                     numberOfBullets = defaultNumberOfBullets;
                 else
                     numberOfBullets = value;
+
+                Debug.Log(NumberOfBullets + " bullets");
             }
         }
 
@@ -56,10 +58,10 @@ namespace Assets.Classes.Weapons
             return NumberOfBullets > 0;
         }
 
-        public override void Fire()
+        public override bool Fire()
         {
             if (!CanShoot())
-                return;
+                return false;
 
             GameObject bullet = (GameObject) Instantiate(BulletPrefab, ShootingPoint.position, ShootingPoint.rotation);
 
@@ -69,6 +71,8 @@ namespace Assets.Classes.Weapons
             bullet.GetComponent<Rigidbody>().velocity = bulletVelocity;
 
             NumberOfBullets--;
+
+            return true;
         }
     }
 }

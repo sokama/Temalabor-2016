@@ -13,18 +13,25 @@ public class InitializeTanks : MonoBehaviour
     void Awake()
     {
         //Player weapon init
-        ShootingWeapon playerPrimaryWeapon = (ShootingWeapon)ScriptableObject.CreateInstance("ShootingWeapon");
+        ReloadableShootingWeapon playerPrimaryWeapon = (ReloadableShootingWeapon)ScriptableObject.CreateInstance("ReloadableShootingWeapon");
         playerPrimaryWeapon.BulletPrefab = BulletPrefab;
         playerPrimaryWeapon.ShootingPoint = Player.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
         playerPrimaryWeapon.defaultBulletSpeed = 10f;
+        playerPrimaryWeapon.ResetBulletSpeed();
         playerPrimaryWeapon.defaultNumberOfBullets = 3;
+        playerPrimaryWeapon.ReloadAllBullets();
+        playerPrimaryWeapon.defaultReloadTime = 3f;
+        playerPrimaryWeapon.ResetReloadTime();
+        playerPrimaryWeapon.DummyMonoBehaviourForStartingCoroutines = this;
         playerPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -10f });
 
         ShootingWeapon playerSecondaryWeapon = (ShootingWeapon)ScriptableObject.CreateInstance("ShootingWeapon");
         playerSecondaryWeapon.BulletPrefab = BulletPrefab;
         playerSecondaryWeapon.ShootingPoint = Player.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
         playerSecondaryWeapon.defaultBulletSpeed = 10f;
+        playerSecondaryWeapon.ResetBulletSpeed();
         playerSecondaryWeapon.defaultNumberOfBullets = 3;
+        playerSecondaryWeapon.ReloadAllBullets();
         playerSecondaryWeapon.AddInstantEffect(new DestroyEffect());
 
         Player.GetComponent<WeaponHolder>().SetPrimaryWeapon(playerPrimaryWeapon);
@@ -35,14 +42,18 @@ public class InitializeTanks : MonoBehaviour
         enemyPrimaryWeapon.BulletPrefab = BulletPrefab;
         enemyPrimaryWeapon.ShootingPoint = Enemy.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
         enemyPrimaryWeapon.defaultBulletSpeed = 10f;
+        enemyPrimaryWeapon.ResetBulletSpeed();
         enemyPrimaryWeapon.defaultNumberOfBullets = 3;
+        enemyPrimaryWeapon.ReloadAllBullets();
         enemyPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -10f });
 
         ShootingWeapon enemySecondaryWeapon = (ShootingWeapon)ScriptableObject.CreateInstance("ShootingWeapon");
         enemySecondaryWeapon.BulletPrefab = BulletPrefab;
         enemySecondaryWeapon.ShootingPoint = Enemy.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
         enemySecondaryWeapon.defaultBulletSpeed = 10f;
+        enemySecondaryWeapon.ResetBulletSpeed();
         enemySecondaryWeapon.defaultNumberOfBullets = 3;
+        enemySecondaryWeapon.ReloadAllBullets();
         enemySecondaryWeapon.AddInstantEffect(new DestroyEffect());
 
         Enemy.GetComponent<WeaponHolder>().SetPrimaryWeapon(enemyPrimaryWeapon);

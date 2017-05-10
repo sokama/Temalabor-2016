@@ -1965,6 +1965,10 @@ MonoBehaviour:
   Enemy: {fileID: 1364584612}
   BulletPrefab: {fileID: 1000012684139776, guid: 386d1a34b8941fb418065568a9acf352,
     type: 2}
+  ShieldGoodPrefab: {fileID: 1000012837257060, guid: a1cbcb6304a73b841b8826aaa8659968,
+    type: 2}
+  ShieldBadPrefab: {fileID: 1000010739528150, guid: 8a3c0fff8bdd6a94a9d8037b87c2b406,
+    type: 2}
 --- !u!1 &1688196241
 GameObject:
   m_ObjectHideFlags: 0

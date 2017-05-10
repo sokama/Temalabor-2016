@@ -10,22 +10,34 @@ namespace Assets.Classes.Effects
     {
         public float damageMultiplier = 1f;
 
+        public GameObject shieldGoodPrefab;
+        public GameObject shieldBadPrefab;
+
+        private GameObject shield;
+
         public override void StartEffect(GameObject target)
         {
             if (target.GetComponent<Health>() != null)
                 target.GetComponent<Health>().damageIntakeMultiplier *= damageMultiplier;
+
+            if (damageMultiplier <= 1)
+                shield = (GameObject)UnityEngine.Object.Instantiate(shieldGoodPrefab, target.transform, false);
+            else
+                shield = (GameObject)UnityEngine.Object.Instantiate(shieldBadPrefab, target.transform, false);
         }
 
         public override void StopEffect(GameObject target)
         {
             Health targetHealth = target.GetComponent<Health>();
-            if(targetHealth != null)
+            if (targetHealth != null)
             {
                 if (damageMultiplier != 0)
                     targetHealth.damageIntakeMultiplier /= damageMultiplier;
                 else
                     targetHealth.damageIntakeMultiplier = 1;
             }
+
+            UnityEngine.Object.Destroy(shield);
         }
 
         public override LongEffect Clone()
@@ -33,8 +45,15 @@ namespace Assets.Classes.Effects
             return new DamageModifierEffect()
             {
                 damageMultiplier = this.damageMultiplier,
-                duration = this.duration
+                duration = this.duration,
+                shieldBadPrefab = this.shieldBadPrefab,
+                shieldGoodPrefab = this.shieldGoodPrefab
             };
+        }
+
+        private void SpawnIndicator()
+        {
+
         }
     }
 }

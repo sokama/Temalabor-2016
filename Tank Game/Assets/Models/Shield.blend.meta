@@ -1,46 +1,19 @@
 fileFormatVersion: 2
-guid: ce37d65440476ee4597baf5b01364b0f
-timeCreated: 1477171286
+guid: 5f38fcd65ad53dd45be4640affa24d84
+timeCreated: 1494442886
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Body
-    100002: Canon
-    100004: //RootNode
-    100006: Tower
-    100008: WheelLeft
-    100010: WheelRight
-    100012: Cylinder
-    400000: Body
-    400002: Canon
-    400004: //RootNode
-    400006: Tower
-    400008: WheelLeft
-    400010: WheelRight
-    400012: Cylinder
-    2300000: Body
-    2300002: Canon
-    2300004: Tower
-    2300006: WheelLeft
-    2300008: WheelRight
-    2300010: Cylinder
-    3300000: Body
-    3300002: Canon
-    3300004: Tower
-    3300006: WheelLeft
-    3300008: WheelRight
-    3300010: Cylinder
-    4300000: Canon
-    4300002: Tower
-    4300004: Body
-    4300006: WheelLeft
-    4300008: WheelRight
-    4300010: Cylinder
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Icosphere
     7400000: Default Take
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -63,7 +36,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.9
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1

@@ -9,6 +9,8 @@ public class InitializeTanks : MonoBehaviour
     public GameObject Enemy;
 
     public GameObject BulletPrefab;
+    public GameObject ShieldGoodPrefab;
+    public GameObject ShieldBadPrefab;
 
     void Awake()
     {
@@ -43,11 +45,18 @@ public class InitializeTanks : MonoBehaviour
         enemyPrimaryWeapon.ShootingPoint = Enemy.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
         enemyPrimaryWeapon.defaultBulletSpeed = 10f;
         enemyPrimaryWeapon.ResetBulletSpeed();
-        enemyPrimaryWeapon.defaultNumberOfBullets = 0;
+        enemyPrimaryWeapon.defaultNumberOfBullets = 1;
         enemyPrimaryWeapon.ReloadAllBullets();
-        enemyPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -90f });
-        enemyPrimaryWeapon.AddLongEffect(new MovementEffect() { movementSpeedMultiplier = 0, rotationSpeedMultiplier = 0, duration = 5 });
-        //enemyPrimaryWeapon.AddLongEffect(new DamageModifierEffect() { damageMultiplier = 5, duration = 10 });
+        enemyPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -99f });
+        enemyPrimaryWeapon.AddLongEffect(new MovementEffect() { movementSpeedMultiplier = 1, rotationSpeedMultiplier = 1, duration = 5 });
+        enemyPrimaryWeapon.AddLongEffect(new DamageModifierEffect()
+        {
+            damageMultiplier = 0,
+            duration = 10,
+            shieldGoodPrefab = ShieldGoodPrefab,
+            shieldBadPrefab = ShieldBadPrefab
+        });
+
 
         ReloadableShootingWeapon enemySecondaryWeapon = (ReloadableShootingWeapon)ScriptableObject.CreateInstance("ReloadableShootingWeapon");
         enemySecondaryWeapon.BulletPrefab = BulletPrefab;
@@ -60,8 +69,14 @@ public class InitializeTanks : MonoBehaviour
         enemySecondaryWeapon.ResetReloadTime();
         enemySecondaryWeapon.DummyMonoBehaviourForStartingCoroutines = this;
         //enemySecondaryWeapon.AddInstantEffect(new DestroyEffect());
-        //enemySecondaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -10f });
-        enemySecondaryWeapon.AddLongEffect(new HealthLongEffect() { healthModifier = -10f, intensity = 0.5f, duration = 20f, dummyMonoBehaviourForStartingCoroutines = this });
+        enemySecondaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -10f });
+        //enemySecondaryWeapon.AddLongEffect(new HealthLongEffect()
+        //{
+        //    healthModifier = -10f,
+        //    intensity = 0.5f,
+        //    duration = 20f,
+        //    dummyMonoBehaviourForStartingCoroutines = this
+        //});
 
         Enemy.GetComponent<WeaponHolder>().SetPrimaryWeapon(enemyPrimaryWeapon);
         Enemy.GetComponent<WeaponHolder>().SetSecondaryWeapon(enemySecondaryWeapon);

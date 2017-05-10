@@ -35,6 +35,8 @@ public class Health : MonoBehaviour
 
         notifyEnemyHealthChange();
         UpdateHealthBar();
+
+        Debug.Log("Health: " + currentHealth);
     }
 
     private void Die()

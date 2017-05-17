@@ -22,7 +22,7 @@ GameObject:
   - 33: {fileID: 33000011303131518}
   - 65: {fileID: 65000010608203072}
   - 23: {fileID: 23000011306294468}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

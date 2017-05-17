@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000012886897346}
   - 198: {fileID: 198000013712318302}
   - 199: {fileID: 199000011180944564}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BulletParticalSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - 65: {fileID: 65000012236222260}
   - 54: {fileID: 54000013145459752}
   - 114: {fileID: 114000010747110236}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

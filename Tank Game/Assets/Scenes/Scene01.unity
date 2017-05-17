@@ -398,13 +398,7 @@ Prefab:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 348660115}
-    - target: {fileID: 114000011415556960, guid: 809acbed7baa35344b120f0f92108d64,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114000011415556960, guid: 809acbed7baa35344b120f0f92108d64, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 809acbed7baa35344b120f0f92108d64, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &161083377
@@ -901,28 +895,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000014159855104, guid: 809acbed7baa35344b120f0f92108d64,
     type: 2}
   m_PrefabInternal: {fileID: 130124432}
---- !u!114 &614024864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 614024863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aa02c32d2e31c24ba6a344400f20d3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &614024865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 614024863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb65e71645bb0f04ea13fdb2466711b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &751159397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,18 +1881,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114000013032727422, guid: 12467e4a713d7d849893cf7f8008900e,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 603862434}
     - target: {fileID: 114000012035724010, guid: 12467e4a713d7d849893cf7f8008900e,
         type: 2}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 348660115}
-    m_RemovedComponents:
-    - {fileID: 114000010645110002, guid: 12467e4a713d7d849893cf7f8008900e, type: 2}
+    - target: {fileID: 114000013032727422, guid: 12467e4a713d7d849893cf7f8008900e,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 603862434}
+    - target: {fileID: 114000013032727422, guid: 12467e4a713d7d849893cf7f8008900e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012761228372, guid: 12467e4a713d7d849893cf7f8008900e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12467e4a713d7d849893cf7f8008900e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1364584612 stripped
@@ -1928,28 +1908,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1000012761228372, guid: 12467e4a713d7d849893cf7f8008900e,
     type: 2}
   m_PrefabInternal: {fileID: 1364584611}
---- !u!114 &1364584613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1364584612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb65e71645bb0f04ea13fdb2466711b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1364584614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1364584612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aa02c32d2e31c24ba6a344400f20d3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1372338461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,6 +1968,16 @@ MonoBehaviour:
   Player: {fileID: 614024863}
   Enemy: {fileID: 1364584612}
   BulletPrefab: {fileID: 1000012684139776, guid: 386d1a34b8941fb418065568a9acf352,
+    type: 2}
+  ShieldGoodPrefab: {fileID: 1000012837257060, guid: a1cbcb6304a73b841b8826aaa8659968,
+    type: 2}
+  ShieldBadPrefab: {fileID: 1000010739528150, guid: 8a3c0fff8bdd6a94a9d8037b87c2b406,
+    type: 2}
+  LaserBeamPrefab: {fileID: 1000010672483598, guid: 0ba234e3f81b82b4c91b8f32ac8dd75b,
+    type: 2}
+  LaserBeamParticlesPrefab: {fileID: 1000011334481110, guid: 08bb17729095d5c4d92e388403238169,
+    type: 2}
+  EffectingAreaPrefab: {fileID: 1000012187834798, guid: 7cef30e95806e2c4c812a6e735ae9f59,
     type: 2}
 --- !u!1 &1688196241
 GameObject:

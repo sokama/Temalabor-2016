@@ -18,7 +18,7 @@ namespace Assets.Classes.Weapons
                 effectHolder.InstantEffects.Add(newEffect);
         }
 
-        public void AddLongEffect(LongEffect newEffect)
+        public virtual void AddLongEffect(LongEffect newEffect)
         {
             if (newEffect != null)
                 effectHolder.LongEffects.Add(newEffect);
@@ -40,7 +40,7 @@ namespace Assets.Classes.Weapons
         //    }
         //}
 
-        public abstract void Fire();
+        public abstract bool Fire();
 
         public abstract bool CanShoot();
     }

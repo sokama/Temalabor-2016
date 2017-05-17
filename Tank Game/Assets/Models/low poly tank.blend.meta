@@ -11,27 +11,32 @@ ModelImporter:
     100006: Tower
     100008: WheelLeft
     100010: WheelRight
+    100012: Cylinder
     400000: Body
     400002: Canon
     400004: //RootNode
     400006: Tower
     400008: WheelLeft
     400010: WheelRight
+    400012: Cylinder
     2300000: Body
     2300002: Canon
     2300004: Tower
     2300006: WheelLeft
     2300008: WheelRight
+    2300010: Cylinder
     3300000: Body
     3300002: Canon
     3300004: Tower
     3300006: WheelLeft
     3300008: WheelRight
+    3300010: Cylinder
     4300000: Canon
     4300002: Tower
     4300004: Body
     4300006: WheelLeft
     4300008: WheelRight
+    4300010: Cylinder
     7400000: Default Take
     9500000: //RootNode
   materials:

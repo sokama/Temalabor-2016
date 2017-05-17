@@ -38,8 +38,8 @@ namespace Assets.Classes.Effects
         {
             if (newEffect != null)
             {
-                newEffect.StartEffect(gameObject);
                 effects.Add(newEffect);
+                newEffect.StartEffect(gameObject);
             }
         }
     }

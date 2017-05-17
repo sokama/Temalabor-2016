@@ -323,9 +323,10 @@ GameObject:
   - 54: {fileID: 54000013797659470}
   - 114: {fileID: 114000013230629308}
   - 65: {fileID: 65000010359749540}
-  - 114: {fileID: 114000011415556960}
   - 114: {fileID: 114000013159971884}
   - 114: {fileID: 114000012500479370}
+  - 114: {fileID: 114000011995834886}
+  - 114: {fileID: 114000010860436856}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -792,7 +793,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &114000011415556960
+--- !u!114 &114000010860436856
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -800,17 +801,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000014159855104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 808c396067503a245b67eb1eae4ef6a2, type: 3}
+  m_Script: {fileID: 11500000, guid: bb65e71645bb0f04ea13fdb2466711b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1000012684139776, guid: 386d1a34b8941fb418065568a9acf352,
-    type: 2}
-  bullet1Icon: {fileID: 1000012995318098}
-  bullet2Icon: {fileID: 1000011757911580}
-  bullet3Icon: {fileID: 1000010631790030}
-  bulletSpeed: 10
-  numberOfBullets: 3
-  reloadTime: 3
+--- !u!114 &114000011995834886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014159855104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa02c32d2e31c24ba6a344400f20d3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012500479370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -822,8 +826,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85a7908b8294874a8865bf6f88f494a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankMovementSpeed: 7
-  tankRotationSpeed: 100
+  defaultTankMovementSpeed: 7
+  defaultTankRotationSpeed: 100
 --- !u!114 &114000012714882614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -907,6 +911,7 @@ MonoBehaviour:
   startHealth: 100
   healthRegenerationUnit: 1
   healthRegenerationTime: 1
+  damageIntakeMultiplier: 1
 --- !u!114 &114000013230629308
 MonoBehaviour:
   m_ObjectHideFlags: 1

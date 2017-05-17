@@ -245,8 +245,9 @@ GameObject:
   - 114: {fileID: 114000013032727422}
   - 65: {fileID: 65000012354678296}
   - 114: {fileID: 114000012670741098}
-  - 114: {fileID: 114000010645110002}
   - 114: {fileID: 114000013105016068}
+  - 114: {fileID: 114000012932264740}
+  - 114: {fileID: 114000010068155036}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -733,7 +734,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000010645110002
+--- !u!114 &114000010068155036
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -741,17 +742,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012761228372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 808c396067503a245b67eb1eae4ef6a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8aa02c32d2e31c24ba6a344400f20d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1000012684139776, guid: 386d1a34b8941fb418065568a9acf352,
-    type: 2}
-  bullet1Icon: {fileID: 1000011924733958}
-  bullet2Icon: {fileID: 1000012922175950}
-  bullet3Icon: {fileID: 1000012715266106}
-  bulletSpeed: 10
-  numberOfBullets: 3
-  reloadTime: 3
 --- !u!114 &114000011239942486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -876,13 +869,24 @@ MonoBehaviour:
   startHealth: 100
   healthRegenerationUnit: 1
   healthRegenerationTime: 1
---- !u!114 &114000013032727422
+--- !u!114 &114000012932264740
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012761228372}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb65e71645bb0f04ea13fdb2466711b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000013032727422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012761228372}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71719fefa37544b45b6f7959a561f802, type: 3}
   m_Name: 
@@ -900,8 +904,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85a7908b8294874a8865bf6f88f494a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankMovementSpeed: 7
-  tankRotationSpeed: 5
+  defaultTankMovementSpeed: 7
+  defaultTankRotationSpeed: 100
 --- !u!114 &114000013207245502
 MonoBehaviour:
   m_ObjectHideFlags: 1

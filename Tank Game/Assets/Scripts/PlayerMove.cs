@@ -34,9 +34,9 @@ public class PlayerMove : MonoBehaviour
     {
         if (isControllable)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) && GetComponent<WeaponHolder>().PrimaryWeaponCanShoot())
                 GetComponent<WeaponHolder>().FirePrimaryWeapon();
-            if (Input.GetKeyDown(KeyCode.Mouse1))
+            if (Input.GetKeyDown(KeyCode.Mouse1) && GetComponent<WeaponHolder>().SecondaryWeaponCanShoot())
                 GetComponent<WeaponHolder>().FireSecondaryWeapon();
         }
 

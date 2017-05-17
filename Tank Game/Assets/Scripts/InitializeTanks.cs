@@ -11,21 +11,34 @@ public class InitializeTanks : MonoBehaviour
     public GameObject BulletPrefab;
     public GameObject ShieldGoodPrefab;
     public GameObject ShieldBadPrefab;
+    public GameObject LaserBeamPrefab;
+    public GameObject LaserBeamParticlesPrefab;
 
     void Awake()
     {
         //Player weapon init
-        ReloadableShootingWeapon playerPrimaryWeapon = (ReloadableShootingWeapon)ScriptableObject.CreateInstance("ReloadableShootingWeapon");
-        playerPrimaryWeapon.BulletPrefab = BulletPrefab;
+        LaserWeapon playerPrimaryWeapon = (LaserWeapon)ScriptableObject.CreateInstance("LaserWeapon");
+        playerPrimaryWeapon.CooldownTime = 10f;
+        playerPrimaryWeapon.OverheatTime = 5f;
+        playerPrimaryWeapon.Intensity = 0.1f;
+        playerPrimaryWeapon.MaxLaserBeamLength = 100f;
         playerPrimaryWeapon.ShootingPoint = Player.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
-        playerPrimaryWeapon.defaultBulletSpeed = 10f;
-        playerPrimaryWeapon.ResetBulletSpeed();
-        playerPrimaryWeapon.defaultNumberOfBullets = 3;
-        playerPrimaryWeapon.ReloadAllBullets();
-        playerPrimaryWeapon.defaultReloadTime = 3f;
-        playerPrimaryWeapon.ResetReloadTime();
-        playerPrimaryWeapon.DummyMonoBehaviourForStartingCoroutines = this;
-        playerPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -10f });
+        playerPrimaryWeapon.LaserBeam = Instantiate(LaserBeamPrefab).GetComponent<LineRenderer>();
+        playerPrimaryWeapon.LaserBeamParticlesPrefab = LaserBeamParticlesPrefab;
+        playerPrimaryWeapon.DummyMonoBehaviour = this;
+        playerPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -1f });
+
+        //ReloadableShootingWeapon playerPrimaryWeapon = (ReloadableShootingWeapon)ScriptableObject.CreateInstance("ReloadableShootingWeapon");
+        //playerPrimaryWeapon.BulletPrefab = BulletPrefab;
+        //playerPrimaryWeapon.ShootingPoint = Player.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
+        //playerPrimaryWeapon.defaultBulletSpeed = 10f;
+        //playerPrimaryWeapon.ResetBulletSpeed();
+        //playerPrimaryWeapon.defaultNumberOfBullets = 3;
+        //playerPrimaryWeapon.ReloadAllBullets();
+        //playerPrimaryWeapon.defaultReloadTime = 3f;
+        //playerPrimaryWeapon.ResetReloadTime();
+        //playerPrimaryWeapon.DummyMonoBehaviourForStartingCoroutines = this;
+        //playerPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -10f });
 
         ShootingWeapon playerSecondaryWeapon = (ShootingWeapon)ScriptableObject.CreateInstance("ShootingWeapon");
         playerSecondaryWeapon.BulletPrefab = BulletPrefab;

@@ -1896,6 +1896,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012761228372, guid: 12467e4a713d7d849893cf7f8008900e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12467e4a713d7d849893cf7f8008900e, type: 2}
   m_IsPrefabParent: 0
@@ -1968,6 +1972,10 @@ MonoBehaviour:
   ShieldGoodPrefab: {fileID: 1000012837257060, guid: a1cbcb6304a73b841b8826aaa8659968,
     type: 2}
   ShieldBadPrefab: {fileID: 1000010739528150, guid: 8a3c0fff8bdd6a94a9d8037b87c2b406,
+    type: 2}
+  LaserBeamPrefab: {fileID: 1000010672483598, guid: 0ba234e3f81b82b4c91b8f32ac8dd75b,
+    type: 2}
+  LaserBeamParticlesPrefab: {fileID: 1000011334481110, guid: 08bb17729095d5c4d92e388403238169,
     type: 2}
 --- !u!1 &1688196241
 GameObject:

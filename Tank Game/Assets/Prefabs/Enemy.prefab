@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010653745188}
   - 95: {fileID: 95000010471583704}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - 4: {fileID: 4000013928539502}
   - 33: {fileID: 33000013367824780}
   - 23: {fileID: 23000011394312974}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WheelRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - 224: {fileID: 224000013358465324}
   - 222: {fileID: 222000010819287744}
   - 114: {fileID: 114000013207245502}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010805361912}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - 4: {fileID: 4000013362205542}
   - 33: {fileID: 33000013884288474}
   - 23: {fileID: 23000011990633848}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WheelLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - 4: {fileID: 4000011215726650}
   - 33: {fileID: 33000011338702460}
   - 23: {fileID: 23000013538042150}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BodyBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - 114: {fileID: 114000013370446866}
   - 114: {fileID: 114000012082445434}
   - 114: {fileID: 114000012035724010}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HUDCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - 224: {fileID: 224000010863673904}
   - 222: {fileID: 222000013010771102}
   - 114: {fileID: 114000012246052460}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - 33: {fileID: 33000011184096230}
   - 23: {fileID: 23000013041696364}
   - 65: {fileID: 65000012536756570}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Canon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - 224: {fileID: 224000011213215204}
   - 222: {fileID: 222000012458231608}
   - 114: {fileID: 114000013728343980}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - 33: {fileID: 33000013189051126}
   - 23: {fileID: 23000014149846508}
   - 65: {fileID: 65000012676576324}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TowerBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - 224: {fileID: 224000012848426086}
   - 222: {fileID: 222000012091724426}
   - 114: {fileID: 114000011239942486}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   - 224: {fileID: 224000010599922674}
   - 222: {fileID: 222000011075395434}
   - 114: {fileID: 114000013799212340}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - 114: {fileID: 114000013105016068}
   - 114: {fileID: 114000012932264740}
   - 114: {fileID: 114000010068155036}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - 224: {fileID: 224000013363110246}
   - 222: {fileID: 222000011208346354}
   - 114: {fileID: 114000012537863108}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010807659528}
   - 65: {fileID: 65000013653389988}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010941002892}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ShootingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 224000013202677472}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 224000013359796696}
   - 114: {fileID: 114000013985037256}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,6 +869,7 @@ MonoBehaviour:
   startHealth: 100
   healthRegenerationUnit: 1
   healthRegenerationTime: 1
+  damageIntakeMultiplier: 1
 --- !u!114 &114000012932264740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -886,7 +887,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012761228372}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71719fefa37544b45b6f7959a561f802, type: 3}
   m_Name: 

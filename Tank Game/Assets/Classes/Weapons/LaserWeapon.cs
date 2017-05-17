@@ -100,6 +100,9 @@ namespace Assets.Classes.Weapons
                 else
                 {
                     LaserBeam.SetPosition(1, ShootingPoint.position + ShootingPoint.forward * MaxLaserBeamLength);
+
+                    if (particles != null)
+                        Destroy(particles);
                 }
 
                 LaserBeam.enabled = true;

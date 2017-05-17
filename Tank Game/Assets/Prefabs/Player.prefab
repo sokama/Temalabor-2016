@@ -911,6 +911,7 @@ MonoBehaviour:
   startHealth: 100
   healthRegenerationUnit: 1
   healthRegenerationTime: 1
+  damageIntakeMultiplier: 1
 --- !u!114 &114000013230629308
 MonoBehaviour:
   m_ObjectHideFlags: 1

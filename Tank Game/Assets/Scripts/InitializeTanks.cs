@@ -13,20 +13,31 @@ public class InitializeTanks : MonoBehaviour
     public GameObject ShieldBadPrefab;
     public GameObject LaserBeamPrefab;
     public GameObject LaserBeamParticlesPrefab;
+    public GameObject EffectingAreaPrefab;
 
     void Awake()
     {
         //Player weapon init
-        LaserWeapon playerPrimaryWeapon = (LaserWeapon)ScriptableObject.CreateInstance("LaserWeapon");
-        playerPrimaryWeapon.CooldownTime = 10f;
-        playerPrimaryWeapon.OverheatTime = 5f;
+        ArealWeapon playerPrimaryWeapon = (ArealWeapon)ScriptableObject.CreateInstance("ArealWeapon");
+        playerPrimaryWeapon.ReloadTime = 5f;
         playerPrimaryWeapon.Intensity = 0.1f;
-        playerPrimaryWeapon.MaxLaserBeamLength = 100f;
-        playerPrimaryWeapon.ShootingPoint = Player.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
-        playerPrimaryWeapon.LaserBeam = Instantiate(LaserBeamPrefab).GetComponent<LineRenderer>();
-        playerPrimaryWeapon.LaserBeamParticlesPrefab = LaserBeamParticlesPrefab;
-        playerPrimaryWeapon.DummyMonoBehaviour = this;
-        playerPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -1f });
+        playerPrimaryWeapon.Duration = 10f;
+        playerPrimaryWeapon.EffectingAreaPrefab = EffectingAreaPrefab;
+        playerPrimaryWeapon.Owner = Player;
+        playerPrimaryWeapon.DummyMonobehaviour = this;
+        playerPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -2f });
+
+        //LaserWeapon playerPrimaryWeapon = (LaserWeapon)ScriptableObject.CreateInstance("LaserWeapon");
+        //playerPrimaryWeapon.CooldownTime = 10f;
+        //playerPrimaryWeapon.OverheatTime = 5f;
+        //playerPrimaryWeapon.Intensity = 0.1f;
+        //playerPrimaryWeapon.MaxLaserBeamLength = 10f;
+        //playerPrimaryWeapon.ShootingPoint = Player.transform.FindChild("Graphics").FindChild("Tower").FindChild("ShootingPoint");
+        //playerPrimaryWeapon.LaserBeam = Instantiate(LaserBeamPrefab).GetComponent<LineRenderer>();
+        //playerPrimaryWeapon.LaserBeamParticlesPrefab = LaserBeamParticlesPrefab;
+        //playerPrimaryWeapon.DummyMonoBehaviour = this;
+        //playerPrimaryWeapon.AddInstantEffect(new HealthInstantEffect() { healthModifier = -2f });
+        ////playerPrimaryWeapon.AddInstantEffect(new DestroyEffect());
 
         //ReloadableShootingWeapon playerPrimaryWeapon = (ReloadableShootingWeapon)ScriptableObject.CreateInstance("ReloadableShootingWeapon");
         //playerPrimaryWeapon.BulletPrefab = BulletPrefab;

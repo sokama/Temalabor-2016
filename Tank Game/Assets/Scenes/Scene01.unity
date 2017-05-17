@@ -1977,6 +1977,8 @@ MonoBehaviour:
     type: 2}
   LaserBeamParticlesPrefab: {fileID: 1000011334481110, guid: 08bb17729095d5c4d92e388403238169,
     type: 2}
+  EffectingAreaPrefab: {fileID: 1000012187834798, guid: 7cef30e95806e2c4c812a6e735ae9f59,
+    type: 2}
 --- !u!1 &1688196241
 GameObject:
   m_ObjectHideFlags: 0

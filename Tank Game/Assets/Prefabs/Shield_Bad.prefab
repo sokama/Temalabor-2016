@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010079057952}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Shield_Bad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - 33: {fileID: 33000010122342782}
   - 23: {fileID: 23000013128418724}
   - 95: {fileID: 95000011884483072}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,0 +1,13 @@
+LaserWeapon;10;5.35;0.1;30.41
+HealthInstantEffect;-2;DestroyEffect;;
+;;;;
+ShootingWeapon;10;2;;
+DestroyEffect;;;;
+MovementEffect;0.3;0.3;3;
+ReloadableShootingWeapon;10;3;3;
+HealthInstantEffect;-10;;;
+;;;;
+ReloadableShootingWeapon;10;1;15;
+DestroyEffect;;;;
+;;;;
+END;;;;

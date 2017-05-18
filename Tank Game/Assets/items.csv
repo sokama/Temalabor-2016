@@ -1,0 +1,14 @@
+4;;;;;;;
+RespawningItem;-21;21;20.51;;;;
+;;;;;;;
+HealthLongEffect;1;0.1;5;MovementEffect;2.32;2.32;5.51
+Item;21;21;;;;;
+HealthInstantEffect;70;;;;;;
+;;;;;;;
+Item;-21;-21;;;;;
+HealthInstantEffect;70;;;;;;
+;;;;;;;
+RespawningItem;21;-21;20.51;;;;
+;;;;;;;
+HealthLongEffect;1;0.1;5;MovementEffect;2.32;2.32;5.51
+END;;;;;;;

@@ -1,0 +1,23 @@
+HOW TO SET ITEMS:;;;;;
+number of items;;;;;
+Item1;;;;;
+Item2;;;;;
+…;;;;;
+END;;;;;
+;;;;;
+ITEM TYPES:;;;;;
+Item;X pos.;Y pos.;;;
+InstantEffect1;InstantEffect2;…;;;
+LongEffect1;LongEffect2;…;;;
+RespawningItem;X pos.;Y pos.;Respawn time;;
+InstantEffect1;InstantEffect2;…;;;
+LongEffect1;LongEffect2;…;;;
+;;;;;
+INSTANT EFFECT TYPES:;;;;;
+HealthInstantEffect;Health modifier;;;;Note: negative health modifier is damaging the tanks, positive is healing them
+DestroyEffect;;;;;
+;;;;;
+LONG EFFECT TYPES:;;;;;
+DamageModifierEffect;Damage Multiplier;Duration;;;
+HealthLongEffect;Health modifier;Instensity;Duration;;
+MovementEffect;Movement speed multiplier;Rotation speed multiplier;Duration;;

@@ -1,0 +1,29 @@
+HOW TO SET TANK WEAPONS:;;;;;
+Player primary weapon;;;;;
+Player secondary weapon;;;;;
+Enemy primary weapon;;;;;
+Enemy secondary weapon;;;;;
+END;;;;;
+;;;;;
+WEAPON TYPES:;;;;;Note: LaserWeapon and ArealWeapon can't have LongEffects, leave that row empty
+ShootingWeapon;Bullet speed;Number of bullets;;;
+InstantEffect1;InstantEffect2;…;;;
+LongEffect1;LongEffect2;…;;;
+ReloadableShootingWeapon;Bullet speed;Number of bullets;Reload time;;
+InstantEffect1;InstantEffect2;…;;;
+LongEffect1;LongEffect2;…;;;
+LaserWeapon;Cooldown time;Overheat time;Intensity;Max. laser beam length;
+InstantEffect1;InstantEffect2;…;;;
+LongEffect1;LongEffect2;…;;;
+ArealWeapon;Reload time;Intensity;Duration;;
+InstantEffect1;InstantEffect2;…;;;
+LongEffect1;LongEffect2;…;;;
+;;;;;
+INSTANT EFFECT TYPES:;;;;;
+HealthInstantEffect;Health modifier;;;;Note: negative health modifier is damaging the tanks, positive is healing them
+DestroyEffect;;;;;
+;;;;;
+LONG EFFECT TYPES:;;;;;
+DamageModifierEffect;Damage Multiplier;Duration;;;
+HealthLongEffect;Health modifier;Instensity;Duration;;
+MovementEffect;Movement speed multiplier;Rotation speed multiplier;Duration;;

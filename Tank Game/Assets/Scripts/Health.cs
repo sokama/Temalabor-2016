@@ -63,7 +63,7 @@ public class Health : MonoBehaviour
     private void notifyEnemyHealthChange()
     {
         if (this.tag == "Enemy")
-            HidingFromPlayer.notifiyHealth((int)currentHealth);
+            EnemyController.notifyHealth((int)currentHealth);
     }
 
     private void UpdateHealthBar()

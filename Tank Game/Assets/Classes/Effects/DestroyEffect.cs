@@ -11,6 +11,7 @@ namespace Assets.Classes.Effects
             if (target.GetComponent<Destructible>() != null)
             {
                 target.GetComponent<Destructible>().Destruct();
+                Map.notifyWallDestroyed(target.transform.position);
             }
         }
     }

@@ -1,9 +1,4 @@
-﻿using Assets.Classes.Effects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Classes.Weapons
 {
@@ -31,14 +26,11 @@ namespace Assets.Classes.Weapons
                     numberOfBullets = defaultNumberOfBullets;
                 else
                     numberOfBullets = value;
-
-                Debug.Log(NumberOfBullets + " bullets");
             }
         }
 
         protected virtual void Awake()
         {
-            Debug.Log("SW Awake meghivva");
             ResetBulletSpeed();
             ReloadAllBullets();
         }

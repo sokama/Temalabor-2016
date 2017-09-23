@@ -10,7 +10,6 @@ namespace Assets.Classes.Weapons
     {
         public float CooldownTime { get; set; }
         public float OverheatTime { get; set; }
-        //public float OverHeatPenaltyTime { get; set; }
         public float Intensity { get; set; }
         public float MaxLaserBeamLength { get; set; }
 
@@ -28,7 +27,6 @@ namespace Assets.Classes.Weapons
         private GameObject target;
         private Vector3 targetHitPoint;
         private Vector3 targetHitDirection;
-        //private RaycastHit targetHitInfo;
 
         public override bool CanShoot()
         {
@@ -64,7 +62,6 @@ namespace Assets.Classes.Weapons
             {
                 FindTarget();
                 HitTarget();
-                //DrawLaserBeam();
 
                 currentHeatLevel += (maxHeatLevel / OverheatTime) * Intensity;
                 if (currentHeatLevel >= maxHeatLevel)
@@ -128,11 +125,6 @@ namespace Assets.Classes.Weapons
             if (Physics.Raycast(ShootingPoint.position, ShootingPoint.forward, out hitInfo, MaxLaserBeamLength))
             {
                 target = hitInfo.collider.gameObject;
-
-                //if (target == null)
-                //    Debug.Log("Target NO");
-                //else
-                //    Debug.Log("Target YES");
 
                 targetHitPoint = hitInfo.point;
                 targetHitDirection = -1f * ShootingPoint.forward;

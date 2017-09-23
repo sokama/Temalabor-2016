@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using Assets.Classes.Weapons;
 
 namespace Assets.Classes.Weapons
 {

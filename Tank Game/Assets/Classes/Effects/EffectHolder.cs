@@ -9,18 +9,6 @@ namespace Assets.Classes.Effects
         public List<InstantEffect> InstantEffects = new List<InstantEffect>();
         public List<LongEffect> LongEffects = new List<LongEffect>();
 
-        //public void AddInstantEffect(InstantEffect newEffect)
-        //{
-        //    if (newEffect != null)
-        //        instantEffects.Add(newEffect);
-        //}
-
-        //public void AddLongEffect(LongEffect newEffect)
-        //{
-        //    if (newEffect != null)
-        //        longEffects.Add(newEffect);
-        //}
-
         public void ActivateInstantEffects(GameObject target)
         {
             foreach (InstantEffect effect in InstantEffects)

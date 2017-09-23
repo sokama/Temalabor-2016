@@ -41,14 +41,6 @@ namespace Assets.Classes.Effects
 
         private IEnumerator ModifyHealth(GameObject target)
         {
-            //if (target.GetComponent<Health>() != null)
-            //    target.GetComponent<Health>().DecreaseHealth(-healthModifier);
-
-            //yield return new WaitForSeconds(intensity);
-
-            //if (isRunning)
-            //    dummyMonoBehaviourForStartingCoroutines.StartCoroutine(ModifyHealth(target));
-
             Health targetHealth = target.GetComponent<Health>();
             while (isRunning)
             {

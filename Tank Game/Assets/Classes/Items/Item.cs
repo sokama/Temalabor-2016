@@ -33,8 +33,6 @@ namespace Assets.Classes.Items
             effectHolder.ActivateInstantEffects(target);
             effectHolder.PassLongEffectsToTarget(target);
 
-            //TODO particles
-
             Destroy(gameObject);
             return;
         }
